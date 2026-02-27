@@ -56,6 +56,9 @@ const I = {
   Zap: ({ s = 14 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
   RotateCcw: ({ s = 16 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>,
   ChevLeft: ({ s = 16 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="15 18 9 12 15 6"/></svg>,
+  Star: ({ s = 20 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
+  Lock: ({ s = 16 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>,
+  CheckCircle: ({ s = 16 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>,
 };
 
 const AudioWave = () => (
@@ -162,6 +165,38 @@ const mockFlashcards = [
   { front:"Quais iSGLT2 têm benefício cardiovascular comprovado em DM2?", back:"Empagliflozina (EMPA-REG OUTCOME)\nCanagliflozina (CANVAS, CREDENCE)\nDapagliflozina (DECLARE-TIMI 58)\nBenefício adicional: ↓ hospitalização por IC e progressão renal" },
   { front:"Meta de HbA1c no DM2 – adulto sem comorbidades relevantes", back:"< 7,0% (padrão ADA 2025)\nMais rigoroso (< 6,5%): jovens, curta duração de DM, sem risco de hipoglicemia\nMenos rigoroso (< 8,0%): idosos frágeis ou com expectativa de vida reduzida" },
 ];
+
+/* ── Trilha do Paciente ── */
+const patTrilhaTopics = [
+  { id:1, emoji:"🩺", title:"Entendendo o Diabetes", desc:"Saiba o que é o diabetes e como ele afeta seu corpo.", lições:5, done:3, color:"#7C3AED", colorBg:"#F3F0FF", xp:150, tag:"Em andamento", tagColor:"#D97706" },
+  { id:2, emoji:"💊", title:"Suas Medicações", desc:"Aprenda sobre a Metformina e seus outros medicamentos.", lições:4, done:4, color:"#22C55E", colorBg:"#F0FDF4", xp:100, tag:"Concluído", tagColor:"#16A34A" },
+  { id:3, emoji:"❤️", title:"Pressão Arterial em Dia", desc:"Entenda a hipertensão e como controlar sua pressão.", lições:5, done:2, color:"#EF4444", colorBg:"#FEF2F2", xp:120, tag:"Em andamento", tagColor:"#D97706" },
+  { id:4, emoji:"🏃", title:"Vida Ativa", desc:"Como a atividade física ajuda no diabetes e na pressão.", lições:4, done:1, color:"#3B82F6", colorBg:"#EFF6FF", xp:130, tag:"Iniciado", tagColor:"#3B82F6" },
+  { id:5, emoji:"🥗", title:"Alimentação Saudável", desc:"Aprenda a comer bem vivendo com diabetes.", lições:6, done:0, color:"#F59E0B", colorBg:"#FFFBEB", xp:140, tag:"Disponível no Nível 4", tagColor:"#D97706", locked:true },
+];
+const patTrilhaAchievements = [
+  { emoji:"🔥", title:"7 dias seguidos", desc:"Estudou 7 dias em sequência", unlocked:true, date:"23/02/2026" },
+  { emoji:"🏆", title:"Primeiro quiz feito", desc:"Completou o primeiro quiz da trilha", unlocked:true, date:"18/02/2026" },
+  { emoji:"💊", title:"Especialista em medicações", desc:"Completou o módulo de medicações", unlocked:true, date:"15/02/2026" },
+  { emoji:"🎯", title:"100% no quiz de diabetes", desc:"Acertou todas as questões do quiz de diabetes", unlocked:false, date:null },
+  { emoji:"🏃", title:"Vida Ativa", desc:"Complete o módulo de atividade física", unlocked:false, date:null },
+  { emoji:"⭐", title:"Explorador da Saúde", desc:"Alcance o Nível 4", unlocked:false, date:null },
+  { emoji:"🤝", title:"Paciente Engajado", desc:"Use o Charcot por 5 dias seguidos", unlocked:false, date:null },
+  { emoji:"💪", title:"Mestre do Glicêmico", desc:"Mantenha HbA1c abaixo de 7% por 3 meses seguidos", unlocked:false, date:null },
+];
+const patTrilhaQuizList = [
+  { id:1, title:"Diabetes: O Básico", questions:3, done:3, score:80, tag:"Concluído", tagColor:"#16A34A", tagBg:"#F0FDF4", emoji:"🩺" },
+  { id:2, title:"Suas Medicações", questions:4, done:0, score:null, tag:"Novo", tagColor:"#7C3AED", tagBg:"#F3F0FF", emoji:"💊" },
+  { id:3, title:"Pressão Alta: Fatos e Mitos", questions:4, done:0, score:null, tag:"Novo", tagColor:"#7C3AED", tagBg:"#F3F0FF", emoji:"❤️" },
+];
+const patMockQuiz = {
+  title:"Diabetes: O Básico",
+  questions:[
+    { q:"O que é a HbA1c que seu médico sempre mede?", opts:["Uma vitamina importante","Uma medida do açúcar no sangue nos últimos 3 meses","Um exame de pressão","Um teste de colesterol"], correct:1, exp:"A HbA1c mostra como estava o açúcar no seu sangue nos últimos 3 meses. Quanto menor, melhor! O seu está em 7,1% — ótima evolução!" },
+    { q:"Por que é importante tomar Metformina todos os dias?", opts:["Só tomar quando sentir mal","Para ajudar o organismo a usar o açúcar corretamente","Para baixar a pressão","Para dormir melhor"], correct:1, exp:"A Metformina ajuda seu corpo a usar o açúcar de forma mais eficiente. Tomar no horário certo, todo dia, faz toda a diferença no controle do diabetes." },
+    { q:"Qual destes aumenta mais rapidamente o açúcar no sangue?", opts:["Feijão cozido","Frango grelhado","Refrigerante","Ovo mexido"], correct:2, exp:"Bebidas açucaradas como refrigerantes sobem rapidamente o açúcar no sangue. Prefira água, chás sem açúcar ou suco natural sem adição." },
+  ],
+};
 
 const portalDocs = [
   { id:1, name:"Hemograma completo", type:"Exame", date:"20/02/2026", source:"Fleury Laboratórios", sourceType:"lab", status:"normal" },
@@ -301,6 +336,33 @@ export default function VOAApp() {
     setFlashMode("active");
   };
 
+  // Trilha do Paciente
+  const [patTrilhaTab, setPatTrilhaTab] = useState("aprender"); // aprender | quiz | conquistas
+  const [patQuizMode, setPatQuizMode] = useState(null); // null | "active" | "done"
+  const [patCurrentQ, setPatCurrentQ] = useState(0);
+  const [patSelectedAnswer, setPatSelectedAnswer] = useState(null);
+  const [patQuizAnswers, setPatQuizAnswers] = useState([]);
+
+  const handlePatAnswerSelect = (idx) => {
+    if (patSelectedAnswer !== null) return;
+    setPatSelectedAnswer(idx);
+    setPatQuizAnswers(a => [...a, idx]);
+  };
+  const handlePatNextQuestion = () => {
+    if (patCurrentQ + 1 >= patMockQuiz.questions.length) {
+      setPatQuizMode("done");
+    } else {
+      setPatCurrentQ(q => q + 1);
+      setPatSelectedAnswer(null);
+    }
+  };
+  const handlePatStartQuiz = () => {
+    setPatCurrentQ(0);
+    setPatSelectedAnswer(null);
+    setPatQuizAnswers([]);
+    setPatQuizMode("active");
+  };
+
   const filteredPatients = useMemo(() => {
     let r = patients;
     if (patSearch) { const s = patSearch.toLowerCase(); r = r.filter(p => p.name.toLowerCase().includes(s) || p.conditions.some(c => c.toLowerCase().includes(s))); }
@@ -331,6 +393,7 @@ export default function VOAApp() {
         <div style={{ width:24,height:1,backgroundColor:"#EBEBEB",margin:"6px 0" }} />
         <NavIcon active={page==="portal"} onClick={()=>{setPage("portal");setRightPanel(null);setPortalTab("docs");}} icon={<I.Person />} badge={false} />
         <NavIcon active={page==="trilha"} onClick={()=>{setPage("trilha");setRightPanel(null);setTrilhaTab("overview");setQuizMode(null);setFlashMode(null);}} icon={<I.BookOpen />} />
+        <NavIcon active={page==="patTrilha"} onClick={()=>{setPage("patTrilha");setRightPanel(null);setPatTrilhaTab("aprender");setPatQuizMode(null);}} icon={<I.Star />} />
         <div style={{ flex:1 }} />
         <NavIcon icon={<I.Settings />} />
         <div style={{ width:34,height:34,borderRadius:"50%",backgroundColor:"#E0D4F5",display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:"#7C3AED",marginBottom:12,cursor:"pointer",position:"relative" }}>
@@ -372,6 +435,11 @@ export default function VOAApp() {
             backgroundColor:page==="trilha"?"#F3F0FF":"transparent",
             color:page==="trilha"?"#7C3AED":"#555",fontWeight:page==="trilha"?600:500,fontSize:14,transition:"all 0.15s"
           }}><I.BookOpen s={16}/> Trilha de Aprendizado</div>
+          <div onClick={()=>{setPage("patTrilha");setPatTrilhaTab("aprender");setPatQuizMode(null);}} style={{
+            display:"flex",alignItems:"center",gap:8,padding:"10px 12px",borderRadius:10,cursor:"pointer",marginBottom:2,
+            backgroundColor:page==="patTrilha"?"#FFFBEB":"transparent",
+            color:page==="patTrilha"?"#D97706":"#555",fontWeight:page==="patTrilha"?600:500,fontSize:14,transition:"all 0.15s"
+          }}><I.Star s={16}/> Trilha do Paciente</div>
           </div>
 
           {/* Page-specific sidebar content */}
@@ -438,6 +506,42 @@ export default function VOAApp() {
                     <div style={{ flex:1,minWidth:0 }}>
                       <div style={{ fontSize:12,fontWeight:500,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap" }}>{d.title}</div>
                       <div style={{ fontSize:10,color:"#999" }}>{d.reviewed}/{d.cards} revisados</div>
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
+            {page === "patTrilha" && (
+              <>
+                <div style={{ padding:"12px 10px", borderRadius:10, background:"linear-gradient(135deg,#FEF3C722,#FDE68A33)", border:"1px solid #FDE68A", marginBottom:10 }}>
+                  <div style={{ fontSize:13, fontWeight:700, color:"#D97706", marginBottom:2 }}>⭐ Nível 3 · Explorador da Saúde</div>
+                  <div style={{ fontSize:11, color:"#888", marginBottom:6 }}>850 / 1000 XP para o próximo nível</div>
+                  <div style={{ height:6, backgroundColor:"#FDE68A", borderRadius:3 }}><div style={{ height:"100%", width:"85%", background:"linear-gradient(90deg,#F59E0B,#FBBF24)", borderRadius:3 }}/></div>
+                </div>
+                <div style={{ display:"flex", gap:6, marginBottom:10 }}>
+                  <div style={{ flex:1, textAlign:"center", padding:"8px 4px", backgroundColor:"#FFF7ED", borderRadius:8 }}>
+                    <div style={{ fontSize:14 }}>🔥</div>
+                    <div style={{ fontSize:11, fontWeight:700, color:"#D97706" }}>7 dias</div>
+                    <div style={{ fontSize:10, color:"#999" }}>streak</div>
+                  </div>
+                  <div style={{ flex:1, textAlign:"center", padding:"8px 4px", backgroundColor:"#F3F0FF", borderRadius:8 }}>
+                    <div style={{ fontSize:14 }}>🏆</div>
+                    <div style={{ fontSize:11, fontWeight:700, color:"#7C3AED" }}>3</div>
+                    <div style={{ fontSize:10, color:"#999" }}>conquistas</div>
+                  </div>
+                  <div style={{ flex:1, textAlign:"center", padding:"8px 4px", backgroundColor:"#F0FDF4", borderRadius:8 }}>
+                    <div style={{ fontSize:14 }}>✅</div>
+                    <div style={{ fontSize:11, fontWeight:700, color:"#22C55E" }}>2</div>
+                    <div style={{ fontSize:10, color:"#999" }}>módulos</div>
+                  </div>
+                </div>
+                <div style={{ fontSize:11,fontWeight:600,color:"#999",textTransform:"uppercase",letterSpacing:0.5,marginBottom:8 }}>Em andamento</div>
+                {patTrilhaTopics.filter(t => !t.locked && t.done > 0 && t.done < t.lições).map(t => (
+                  <div key={t.id} style={{ display:"flex",alignItems:"center",gap:8,padding:"7px 8px",borderRadius:8,cursor:"pointer",marginBottom:2 }}>
+                    <div style={{ width:26,height:26,borderRadius:7,flexShrink:0,backgroundColor:t.colorBg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:13 }}>{t.emoji}</div>
+                    <div style={{ flex:1,minWidth:0 }}>
+                      <div style={{ fontSize:12,fontWeight:500,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap" }}>{t.title}</div>
+                      <div style={{ fontSize:10,color:"#999" }}>{t.done}/{t.lições} lições</div>
                     </div>
                   </div>
                 ))}
@@ -1322,6 +1426,333 @@ export default function VOAApp() {
             </div>
           </>
         )}
+
+        {/* ──────── TRILHA DO PACIENTE ──────── */}
+        {page === "patTrilha" && (
+          <>
+            {/* Header */}
+            <div style={{ padding:"20px 28px 16px", backgroundColor:"#fff", borderBottom:"1px solid #EBEBEB" }}>
+              <div style={{ display:"flex", alignItems:"flex-start", justifyContent:"space-between", marginBottom:14 }}>
+                <div>
+                  <h1 style={{ fontSize:22, fontWeight:700, margin:0, letterSpacing:-0.5 }}>Olá, Carlos! 👋</h1>
+                  <p style={{ fontSize:13, color:"#888", margin:"4px 0 0" }}>Continue sua trilha de saúde pessoal</p>
+                </div>
+                <button onClick={() => setRightPanel("patTrilhaCharcot")} style={{ display:"flex", alignItems:"center", gap:6, padding:"10px 20px", border:"none", borderRadius:10, cursor:"pointer", fontSize:14, fontWeight:600, background:"linear-gradient(135deg,#F59E0B,#D97706)", color:"#fff" }}>
+                  <I.Sparkle s={16}/> Perguntar ao Charcot
+                </button>
+              </div>
+              {/* Level + XP bar */}
+              <div style={{ display:"flex", alignItems:"center", gap:14 }}>
+                <div style={{ display:"flex", alignItems:"center", gap:8, padding:"8px 16px", borderRadius:24, background:"linear-gradient(135deg,#F59E0B,#FBBF24)", color:"#fff", flexShrink:0 }}>
+                  <span style={{ fontSize:14 }}>⭐</span>
+                  <span style={{ fontWeight:700, fontSize:14 }}>Nível 3</span>
+                  <span style={{ fontSize:12, opacity:0.85 }}>· Explorador da Saúde</span>
+                </div>
+                <div style={{ display:"flex", alignItems:"center", gap:8, flex:1 }}>
+                  <div style={{ flex:1, height:10, backgroundColor:"#F3F3F3", borderRadius:6, overflow:"hidden" }}>
+                    <div style={{ height:"100%", width:"85%", background:"linear-gradient(90deg,#F59E0B,#FBBF24)", borderRadius:6 }}/>
+                  </div>
+                  <span style={{ fontSize:12, fontWeight:600, color:"#D97706", whiteSpace:"nowrap" }}>850 / 1000 XP</span>
+                </div>
+                <div style={{ display:"flex", alignItems:"center", gap:5, padding:"7px 14px", borderRadius:20, backgroundColor:"#FFF7ED", border:"1px solid #FDE68A" }}>
+                  <span style={{ fontSize:16 }}>🔥</span>
+                  <span style={{ fontWeight:700, fontSize:14, color:"#D97706" }}>7</span>
+                  <span style={{ fontSize:12, color:"#888" }}>dias</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick stats */}
+            <div style={{ padding:"10px 28px", backgroundColor:"#FAFAFA", borderBottom:"1px solid #EBEBEB", display:"flex", gap:0, alignItems:"center" }}>
+              {[
+                { label:"Módulos concluídos", value:"2", sub:"de 4 iniciados" },
+                { label:"Quizzes feitos", value:"1", sub:"80% de aproveitamento" },
+                { label:"Conquistas", value:"3", sub:"desbloqueadas" },
+                { label:"Sequência atual", value:"7 dias 🔥", sub:"recorde pessoal!" },
+              ].map((s, i) => (
+                <div key={i} style={{ display:"flex", alignItems:"center" }}>
+                  {i > 0 && <div style={{ width:1, height:32, backgroundColor:"#E0E0E0", margin:"0 20px" }}/>}
+                  <div>
+                    <div style={{ fontSize:17, fontWeight:700, letterSpacing:-0.5 }}>{s.value}</div>
+                    <div style={{ fontSize:11, color:"#888" }}>{s.label} · {s.sub}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Tab bar */}
+            <div style={{ padding:"0 28px", backgroundColor:"#fff", borderBottom:"1px solid #EBEBEB", display:"flex" }}>
+              {[
+                { key:"aprender", label:"📚 Aprender" },
+                { key:"quiz", label:"🎯 Quiz" },
+                { key:"conquistas", label:"🏆 Conquistas" },
+              ].map(t => (
+                <button key={t.key} onClick={() => setPatTrilhaTab(t.key)} style={{
+                  padding:"13px 18px", border:"none", backgroundColor:"transparent",
+                  borderBottom: patTrilhaTab===t.key ? "2px solid #F59E0B" : "2px solid transparent",
+                  color: patTrilhaTab===t.key ? "#D97706" : "#666",
+                  fontWeight: patTrilhaTab===t.key ? 600 : 400,
+                  fontSize:14, cursor:"pointer", fontFamily:"inherit", transition:"all 0.15s"
+                }}>{t.label}</button>
+              ))}
+            </div>
+
+            {/* Tab content */}
+            <div style={{ flex:1, overflow:"auto", padding:"20px 28px" }}>
+
+              {/* ═══ APRENDER ═══ */}
+              {patTrilhaTab === "aprender" && (
+                <>
+                  {/* Featured card */}
+                  <div style={{ background:"linear-gradient(135deg,#7C3AED,#5B21B6)", borderRadius:16, padding:"24px 28px", marginBottom:24, position:"relative", overflow:"hidden" }}>
+                    <div style={{ position:"absolute", top:-16, right:16, fontSize:72, opacity:0.12, lineHeight:1 }}>🩺</div>
+                    <div style={{ fontSize:11, fontWeight:700, color:"rgba(255,255,255,0.7)", textTransform:"uppercase", letterSpacing:1, marginBottom:8 }}>Plano de hoje</div>
+                    <div style={{ fontSize:20, fontWeight:700, color:"#fff", marginBottom:6 }}>Continue: Entendendo o Diabetes</div>
+                    <div style={{ fontSize:14, color:"rgba(255,255,255,0.8)", marginBottom:16 }}>Lição 4 de 5 · +50 XP ao concluir · ~5 min</div>
+                    <div style={{ height:8, backgroundColor:"rgba(255,255,255,0.2)", borderRadius:4, marginBottom:18 }}>
+                      <div style={{ height:"100%", width:"60%", backgroundColor:"#FBBF24", borderRadius:4 }}/>
+                    </div>
+                    <button style={{ display:"flex", alignItems:"center", gap:8, padding:"12px 24px", border:"2px solid rgba(255,255,255,0.4)", borderRadius:12, cursor:"pointer", fontSize:15, fontWeight:700, backgroundColor:"rgba(255,255,255,0.15)", color:"#fff", fontFamily:"inherit" }}>
+                      ▶ Continuar lição
+                    </button>
+                  </div>
+
+                  {/* Topics grid */}
+                  <div style={{ fontSize:16, fontWeight:700, marginBottom:16 }}>Seus módulos de aprendizado</div>
+                  <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:14, marginBottom:20 }}>
+                    {patTrilhaTopics.map(t => {
+                      const pct = Math.round((t.done / t.lições) * 100);
+                      return (
+                        <div key={t.id} style={{ backgroundColor:"#fff", borderRadius:14, padding:"20px", border: t.locked ? "1px dashed #D0D0D0" : "1px solid #E8E8E8", cursor: t.locked ? "default" : "pointer", opacity: t.locked ? 0.65 : 1, position:"relative" }}>
+                          <div style={{ display:"flex", alignItems:"flex-start", justifyContent:"space-between", marginBottom:14 }}>
+                            <div style={{ width:50, height:50, borderRadius:14, backgroundColor:t.colorBg, display:"flex", alignItems:"center", justifyContent:"center", fontSize:24 }}>{t.emoji}</div>
+                            <span style={{ fontSize:10, padding:"3px 8px", borderRadius:5, fontWeight:700, backgroundColor: t.locked ? "#F0F0F0" : t.tagColor+"20", color: t.locked ? "#999" : t.tagColor }}>
+                              {t.locked ? <span style={{display:"flex",alignItems:"center",gap:4}}><I.Lock s={10}/> {t.tag}</span> : t.tag}
+                            </span>
+                          </div>
+                          <div style={{ fontSize:15, fontWeight:700, marginBottom:5 }}>{t.title}</div>
+                          <div style={{ fontSize:12, color:"#888", marginBottom:14, lineHeight:1.4 }}>{t.desc}</div>
+                          {!t.locked ? (
+                            <>
+                              <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:6 }}>
+                                <span style={{ fontSize:12, color:"#999" }}>{t.done}/{t.lições} lições</span>
+                                <span style={{ fontSize:12, fontWeight:700, color:t.color }}>{pct}%</span>
+                              </div>
+                              <div style={{ height:6, backgroundColor:"#F0F0F0", borderRadius:3, marginBottom:14 }}>
+                                <div style={{ height:"100%", width:`${pct}%`, backgroundColor:t.color, borderRadius:3 }}/>
+                              </div>
+                              <button style={{ width:"100%", padding:"9px 0", border:"none", borderRadius:8, cursor:"pointer", fontSize:13, fontWeight:600, backgroundColor: pct===100 ? t.colorBg : t.color, color: pct===100 ? t.color : "#fff", fontFamily:"inherit" }}>
+                                {pct===100 ? "✓ Revisar" : pct===0 ? "Começar →" : "Continuar →"}
+                              </button>
+                            </>
+                          ) : (
+                            <div style={{ display:"flex", alignItems:"center", gap:6, padding:"9px 14px", backgroundColor:"#F5F5F5", borderRadius:8 }}>
+                              <I.Lock s={13}/><span style={{ fontSize:12, color:"#999" }}>Desbloqueie no Nível 4</span>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Charcot sugere */}
+                  <div style={{ background:"linear-gradient(135deg,#FFFBEB,#FEF3C7)", borderRadius:14, padding:"20px 24px", border:"1px solid #FDE68A", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+                    <div>
+                      <div style={{ fontSize:14, fontWeight:700, marginBottom:4 }}>💡 Charcot sugere</div>
+                      <div style={{ fontSize:13, color:"#92400E", lineHeight:1.4 }}>Seu HbA1c melhorou de 8,2% para 7,1%! Que tal aprender sobre alimentação para continuar essa tendência?</div>
+                    </div>
+                    <button onClick={() => setRightPanel("patTrilhaCharcot")} style={{ display:"flex", alignItems:"center", gap:6, padding:"10px 18px", border:"none", borderRadius:9, cursor:"pointer", fontSize:13, fontWeight:600, backgroundColor:"#F59E0B", color:"#fff", flexShrink:0, fontFamily:"inherit", marginLeft:16 }}>
+                      <I.Sparkle s={14}/> Perguntar
+                    </button>
+                  </div>
+                </>
+              )}
+
+              {/* ═══ QUIZ ═══ */}
+              {patTrilhaTab === "quiz" && (
+                <>
+                  {patQuizMode === null && (
+                    <>
+                      <div style={{ marginBottom:20 }}>
+                        <div style={{ fontSize:17, fontWeight:700, marginBottom:4 }}>🎯 Quizzes de saúde</div>
+                        <div style={{ fontSize:13, color:"#888" }}>Teste o que você aprendeu sobre suas condições de saúde, de um jeito divertido.</div>
+                      </div>
+                      <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
+                        {patTrilhaQuizList.map(q => (
+                          <div key={q.id} style={{ display:"flex", alignItems:"center", gap:16, padding:"18px 22px", backgroundColor:"#fff", borderRadius:13, border:"1px solid #E8E8E8" }}>
+                            <div style={{ width:52, height:52, borderRadius:14, backgroundColor:"#FFF7ED", display:"flex", alignItems:"center", justifyContent:"center", fontSize:26, flexShrink:0 }}>{q.emoji}</div>
+                            <div style={{ flex:1 }}>
+                              <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:6 }}>
+                                <span style={{ fontWeight:600, fontSize:15 }}>{q.title}</span>
+                                <span style={{ fontSize:10, padding:"2px 8px", borderRadius:4, fontWeight:700, backgroundColor:q.tagBg, color:q.tagColor }}>{q.tag}</span>
+                              </div>
+                              <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                                <span style={{ fontSize:12, color:"#888" }}>{q.questions} perguntas</span>
+                                {q.score !== null && <span style={{ fontSize:12, fontWeight:700, color:"#22C55E" }}>✓ Nota: {q.score}%</span>}
+                              </div>
+                            </div>
+                            <button onClick={handlePatStartQuiz} style={{ padding:"9px 20px", border:"none", borderRadius:9, cursor:"pointer", fontSize:13, fontWeight:600, background: q.done===q.questions ? "#FFF7ED" : "linear-gradient(135deg,#F59E0B,#FBBF24)", color: q.done===q.questions ? "#D97706" : "#fff", fontFamily:"inherit", flexShrink:0 }}>
+                              {q.done===q.questions ? <span style={{display:"flex",alignItems:"center",gap:4}}><I.RotateCcw s={13}/> Refazer</span> : "Jogar →"}
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div style={{ marginTop:20, padding:"20px 24px", backgroundColor:"#FFF7ED", borderRadius:13, border:"1px dashed #FDE68A", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+                        <div>
+                          <div style={{ fontSize:14, fontWeight:700, marginBottom:4 }}>Quer aprender mais?</div>
+                          <div style={{ fontSize:13, color:"#888" }}>O Charcot pode explicar qualquer dúvida sobre diabetes, pressão ou medicamentos em linguagem simples.</div>
+                        </div>
+                        <button onClick={() => setRightPanel("patTrilhaCharcot")} style={{ display:"flex", alignItems:"center", gap:6, padding:"10px 18px", border:"none", borderRadius:9, cursor:"pointer", fontSize:13, fontWeight:600, backgroundColor:"#F59E0B", color:"#fff", flexShrink:0, fontFamily:"inherit", marginLeft:16 }}>
+                          <I.Sparkle s={14}/> Perguntar
+                        </button>
+                      </div>
+                    </>
+                  )}
+
+                  {patQuizMode === "active" && (
+                    <div style={{ maxWidth:620, margin:"0 auto" }}>
+                      <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:20 }}>
+                        <button onClick={()=>setPatQuizMode(null)} style={{ background:"none", border:"none", cursor:"pointer", color:"#666", display:"flex", padding:0 }}><I.ChevLeft s={18}/></button>
+                        <div style={{ flex:1 }}>
+                          <div style={{ fontSize:15, fontWeight:700 }}>{patMockQuiz.title}</div>
+                          <div style={{ fontSize:12, color:"#888", marginTop:2 }}>Pergunta {patCurrentQ+1} de {patMockQuiz.questions.length}</div>
+                        </div>
+                        <span style={{ fontSize:13, fontWeight:700, color:"#F59E0B", backgroundColor:"#FFF7ED", padding:"4px 10px", borderRadius:12 }}>+{patCurrentQ * 20} XP</span>
+                      </div>
+                      <div style={{ height:10, backgroundColor:"#F0F0F0", borderRadius:6, marginBottom:28, overflow:"hidden" }}>
+                        <div style={{ height:"100%", width:`${(patCurrentQ/patMockQuiz.questions.length)*100}%`, background:"linear-gradient(90deg,#F59E0B,#FBBF24)", borderRadius:6, transition:"width 0.3s" }}/>
+                      </div>
+
+                      <div style={{ backgroundColor:"#fff", borderRadius:16, padding:"28px", border:"1px solid #E8E8E8", marginBottom:16 }}>
+                        <div style={{ fontSize:18, fontWeight:600, lineHeight:1.5, marginBottom:24, color:"#1a1a1a" }}>
+                          {patMockQuiz.questions[patCurrentQ].q}
+                        </div>
+                        <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
+                          {patMockQuiz.questions[patCurrentQ].opts.map((opt, idx) => {
+                            const isSelected = patSelectedAnswer === idx;
+                            const isCorrect = idx === patMockQuiz.questions[patCurrentQ].correct;
+                            const revealed = patSelectedAnswer !== null;
+                            let bg = "#FAFAFA", border = "1px solid #E0E0E0", color = "#333";
+                            if (revealed && isCorrect) { bg="#F0FDF4"; border="2px solid #22C55E"; color="#166534"; }
+                            else if (revealed && isSelected && !isCorrect) { bg="#FEF2F2"; border="2px solid #EF4444"; color="#991B1B"; }
+                            return (
+                              <button key={idx} onClick={()=>handlePatAnswerSelect(idx)} style={{ display:"flex", alignItems:"center", gap:12, padding:"16px 18px", border, borderRadius:12, backgroundColor:bg, cursor:revealed?"default":"pointer", fontSize:14, color, textAlign:"left", fontFamily:"inherit", transition:"all 0.2s" }}>
+                                <div style={{ width:28, height:28, borderRadius:"50%", flexShrink:0, backgroundColor: revealed&&isCorrect?"#22C55E":revealed&&isSelected&&!isCorrect?"#EF4444":"#EDEDED", color: revealed&&(isCorrect||(isSelected&&!isCorrect))?"#fff":"#666", display:"flex", alignItems:"center", justifyContent:"center", fontSize:12, fontWeight:700 }}>
+                                  {revealed && isCorrect ? "✓" : revealed && isSelected && !isCorrect ? "✗" : String.fromCharCode(65+idx)}
+                                </div>
+                                {opt}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      {patSelectedAnswer !== null && (
+                        <>
+                          <div style={{ padding:"14px 18px", backgroundColor:"#FFF7ED", borderRadius:10, border:"1px solid #FDE68A", marginBottom:16, display:"flex", gap:10 }}>
+                            <div style={{ color:"#D97706", flexShrink:0, marginTop:1 }}><I.Sparkle s={16}/></div>
+                            <div style={{ fontSize:13, lineHeight:1.6, color:"#92400E" }}>
+                              <strong>Charcot explica:</strong> {patMockQuiz.questions[patCurrentQ].exp}
+                            </div>
+                          </div>
+                          <button onClick={handlePatNextQuestion} style={{ width:"100%", padding:"14px 0", border:"none", borderRadius:12, background:"linear-gradient(135deg,#F59E0B,#FBBF24)", color:"#fff", fontWeight:700, fontSize:16, cursor:"pointer", fontFamily:"inherit" }}>
+                            {patCurrentQ+1 < patMockQuiz.questions.length ? "Próxima pergunta →" : "Ver resultado 🎉"}
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  )}
+
+                  {patQuizMode === "done" && (
+                    <div style={{ maxWidth:540, margin:"0 auto", textAlign:"center" }}>
+                      <div style={{ fontSize:72, marginBottom:12 }}>🎉</div>
+                      <div style={{ fontSize:26, fontWeight:700, marginBottom:6 }}>Arrasou no quiz!</div>
+                      <div style={{ fontSize:14, color:"#888", marginBottom:28 }}>{patMockQuiz.title}</div>
+                      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:12, marginBottom:20 }}>
+                        {[
+                          { l:"Acertos", v:`${patQuizAnswers.filter((a,i)=>a===patMockQuiz.questions[i]?.correct).length}/${patMockQuiz.questions.length}`, c:"#22C55E", emoji:"✅" },
+                          { l:"Aproveitamento", v:`${Math.round((patQuizAnswers.filter((a,i)=>a===patMockQuiz.questions[i]?.correct).length/patMockQuiz.questions.length)*100)}%`, c:"#F59E0B", emoji:"⭐" },
+                          { l:"XP ganho", v:`+${patQuizAnswers.filter((a,i)=>a===patMockQuiz.questions[i]?.correct).length * 20} XP`, c:"#7C3AED", emoji:"✨" },
+                        ].map((s,i)=>(
+                          <div key={i} style={{ backgroundColor:"#fff", borderRadius:14, padding:"20px 14px", border:"1px solid #E8E8E8" }}>
+                            <div style={{ fontSize:28, marginBottom:6 }}>{s.emoji}</div>
+                            <div style={{ fontSize:22, fontWeight:700, color:s.c, marginBottom:4 }}>{s.v}</div>
+                            <div style={{ fontSize:12, color:"#888" }}>{s.l}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <div style={{ padding:"16px 20px", backgroundColor:"#FFF7ED", borderRadius:12, border:"2px solid #FDE68A", marginBottom:24, display:"flex", alignItems:"center", gap:12 }}>
+                        <div style={{ fontSize:36 }}>🏆</div>
+                        <div style={{ textAlign:"left" }}>
+                          <div style={{ fontSize:12, fontWeight:600, color:"#D97706" }}>Conquista desbloqueada!</div>
+                          <div style={{ fontSize:15, fontWeight:700 }}>Primeiro quiz feito</div>
+                          <div style={{ fontSize:12, color:"#888" }}>+100 XP bônus adicionados</div>
+                        </div>
+                      </div>
+                      <div style={{ display:"flex", gap:10, justifyContent:"center" }}>
+                        <button onClick={handlePatStartQuiz} style={{ display:"flex", alignItems:"center", gap:6, padding:"11px 22px", border:"1px solid #E0E0E0", borderRadius:10, backgroundColor:"#fff", cursor:"pointer", fontSize:14, fontWeight:500, color:"#555", fontFamily:"inherit" }}>
+                          <I.RotateCcw s={14}/> Refazer
+                        </button>
+                        <button onClick={()=>setPatQuizMode(null)} style={{ display:"flex", alignItems:"center", gap:6, padding:"11px 22px", border:"none", borderRadius:10, cursor:"pointer", fontSize:14, fontWeight:600, background:"linear-gradient(135deg,#F59E0B,#FBBF24)", color:"#fff", fontFamily:"inherit" }}>
+                          Outros quizzes 🎯
+                        </button>
+                        <button onClick={()=>setRightPanel("patTrilhaCharcot")} style={{ display:"flex", alignItems:"center", gap:6, padding:"11px 22px", border:"1px solid #FDE68A", borderRadius:10, backgroundColor:"#FFF7ED", cursor:"pointer", fontSize:14, fontWeight:600, color:"#D97706", fontFamily:"inherit" }}>
+                          <I.Sparkle s={14}/> Perguntar ao Charcot
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
+
+              {/* ═══ CONQUISTAS ═══ */}
+              {patTrilhaTab === "conquistas" && (
+                <>
+                  {/* Level hero card */}
+                  <div style={{ background:"linear-gradient(135deg,#F59E0B,#D97706)", borderRadius:18, padding:"28px 32px", marginBottom:28, display:"flex", alignItems:"center", gap:20, overflow:"hidden", position:"relative" }}>
+                    <div style={{ position:"absolute", top:-20, right:-20, fontSize:120, opacity:0.08, lineHeight:1 }}>⭐</div>
+                    <div style={{ width:76, height:76, borderRadius:"50%", backgroundColor:"rgba(255,255,255,0.25)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:38, flexShrink:0 }}>⭐</div>
+                    <div style={{ flex:1 }}>
+                      <div style={{ fontSize:12, fontWeight:600, color:"rgba(255,255,255,0.75)", marginBottom:4 }}>Carlos Eduardo Silva</div>
+                      <div style={{ fontSize:22, fontWeight:700, color:"#fff", marginBottom:6 }}>Nível 3 · Explorador da Saúde</div>
+                      <div style={{ display:"flex", alignItems:"center", gap:10 }}>
+                        <div style={{ flex:1, height:8, backgroundColor:"rgba(255,255,255,0.3)", borderRadius:4, overflow:"hidden" }}>
+                          <div style={{ height:"100%", width:"85%", backgroundColor:"rgba(255,255,255,0.9)", borderRadius:4 }}/>
+                        </div>
+                        <span style={{ fontSize:12, color:"rgba(255,255,255,0.9)", fontWeight:600, whiteSpace:"nowrap" }}>850 / 1000 XP</span>
+                      </div>
+                    </div>
+                    <div style={{ textAlign:"center", flexShrink:0 }}>
+                      <div style={{ fontSize:32, fontWeight:700, color:"#fff" }}>🔥 7</div>
+                      <div style={{ fontSize:12, color:"rgba(255,255,255,0.8)" }}>dias seguidos</div>
+                    </div>
+                  </div>
+
+                  <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:16 }}>
+                    <div style={{ fontSize:16, fontWeight:700 }}>Conquistas</div>
+                    <span style={{ fontSize:13, color:"#888" }}>3 de 8 desbloqueadas</span>
+                  </div>
+
+                  <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:12 }}>
+                    {patTrilhaAchievements.map((a, i) => (
+                      <div key={i} style={{ backgroundColor:"#fff", borderRadius:14, padding:"20px", border: a.unlocked ? "2px solid #FDE68A" : "1px solid #E8E8E8", opacity: a.unlocked ? 1 : 0.5, position:"relative", overflow:"hidden" }}>
+                        {a.unlocked && <div style={{ position:"absolute", top:0, right:0, width:0, height:0, borderStyle:"solid", borderWidth:"0 32px 32px 0", borderColor:`transparent #F59E0B transparent transparent` }}/>}
+                        <div style={{ fontSize:38, marginBottom:12 }}>{a.unlocked ? a.emoji : "🔒"}</div>
+                        <div style={{ fontSize:14, fontWeight:700, marginBottom:4, color: a.unlocked ? "#1a1a1a" : "#888" }}>{a.title}</div>
+                        <div style={{ fontSize:12, color:"#999", lineHeight:1.4, marginBottom: a.unlocked && a.date ? 8 : 0 }}>{a.desc}</div>
+                        {a.unlocked && a.date && (
+                          <div style={{ fontSize:11, color:"#D97706", fontWeight:600 }}>✓ {a.date}</div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          </>
+        )}
+
       </div>
 
       {/* ═══ RIGHT PANELS ═══ */}
@@ -1580,6 +2011,54 @@ export default function VOAApp() {
             ))}
           </div>
           <ChatInput placeholder={portalSelectedDoc ? "Pergunte sobre este documento..." : "Pergunte sobre sua saúde..."} />
+        </div>
+      )}
+
+      {/* Patient Trail Charcot */}
+      {rightPanel === "patTrilhaCharcot" && (
+        <div style={{ width:400, minWidth:400, borderLeft:"1px solid #EBEBEB", backgroundColor:"#fff", display:"flex", flexDirection:"column", overflow:"hidden" }}>
+          <div style={{ padding:"12px 16px", borderBottom:"1px solid #EBEBEB", display:"flex", alignItems:"center", gap:8 }}>
+            <button onClick={()=>setRightPanel(null)} style={{ background:"none", border:"none", cursor:"pointer", color:"#666", display:"flex" }}><I.Close /></button>
+            <div style={{ flex:1, fontSize:15, fontWeight:700 }}>Charcot – Seu Assistente de Saúde</div>
+            <button style={{ background:"none", border:"none", cursor:"pointer", color:"#666", display:"flex" }}><I.Refresh /></button>
+          </div>
+
+          <div style={{ padding:"8px 16px", backgroundColor:"#FFF7ED", display:"flex", alignItems:"center", gap:6, fontSize:12, color:"#D97706", borderBottom:"1px solid #FDE68A" }}>
+            <span>⭐</span> Nível 3 · 850 XP · <span>🔥</span> 7 dias de streak
+          </div>
+
+          <div style={{ flex:1, overflow:"auto", padding:"20px 16px" }}>
+            <div style={{ textAlign:"center", marginBottom:24, padding:"0 10px" }}>
+              <div style={{ width:56, height:56, borderRadius:"50%", background:"linear-gradient(135deg,#F59E0B,#FBBF24)", display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 12px", fontSize:28 }}>🤖</div>
+              <div style={{ fontSize:16, fontWeight:700, marginBottom:6 }}>Olá, Carlos! 👋</div>
+              <div style={{ fontSize:13, color:"#888", lineHeight:1.5 }}>Estou aqui para explicar qualquer coisa sobre sua saúde de um jeito simples e claro!</div>
+            </div>
+
+            <div style={{ fontSize:12, fontWeight:600, color:"#999", textTransform:"uppercase", letterSpacing:0.5, marginBottom:8 }}>Sobre seu aprendizado</div>
+            {[
+              "Me explique o que é HbA1c de um jeito simples",
+              "Por que preciso tomar Metformina todos os dias?",
+              "Como a alimentação afeta meu diabetes?",
+              "Qual é o ideal de pressão para mim?",
+            ].map((s, i) => (
+              <button key={i} style={{ width:"100%", display:"flex", alignItems:"center", gap:8, padding:"10px 14px", border:"1px solid #FDE68A", borderRadius:10, backgroundColor:"#FFFBEB", cursor:"pointer", fontSize:13, color:"#92400E", textAlign:"left", fontFamily:"inherit", marginBottom:8 }}>
+                💡 {s}
+              </button>
+            ))}
+
+            <div style={{ fontSize:12, fontWeight:600, color:"#999", textTransform:"uppercase", letterSpacing:0.5, marginBottom:8, marginTop:16 }}>Sobre minha saúde</div>
+            {[
+              "Meus últimos exames estão bons?",
+              "Como estou me saindo no controle do diabetes?",
+              "Tenho algum sinal de alerta que preciso conhecer?",
+              "Me dê dicas práticas para o dia a dia",
+            ].map((s, i) => (
+              <button key={i} style={{ width:"100%", display:"flex", alignItems:"center", gap:8, padding:"10px 14px", border:"1px solid #E8E8E8", borderRadius:10, backgroundColor:"#FAFAFA", cursor:"pointer", fontSize:13, color:"#555", textAlign:"left", fontFamily:"inherit", marginBottom:8 }}>
+                <I.Heart /> {s}
+              </button>
+            ))}
+          </div>
+          <ChatInput placeholder="Pergunte qualquer coisa sobre sua saúde..." />
         </div>
       )}
 
