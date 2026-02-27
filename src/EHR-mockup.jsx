@@ -44,6 +44,18 @@ const I = {
   Page: () => <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/></svg>,
   Clock: () => <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
   Warning: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EAB308" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>,
+  Person: ({ s = 20 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
+  Beaker: ({ s = 14 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 3h15"/><path d="M6 3v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3"/><path d="M6 14h12"/></svg>,
+  LinkIcon: ({ s = 16 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>,
+  CloudUp: ({ s = 32 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>,
+  BookOpen: ({ s = 20 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>,
+  Trophy: ({ s = 18 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>,
+  Target: ({ s = 18 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>,
+  Layers: ({ s = 18 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>,
+  CheckSquare: ({ s = 18 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>,
+  Zap: ({ s = 14 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+  RotateCcw: ({ s = 16 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>,
+  ChevLeft: ({ s = 16 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="15 18 9 12 15 6"/></svg>,
 };
 
 const AudioWave = () => (
@@ -98,6 +110,75 @@ const mockReport = {
   insight:"Pacientes que utilizam combinação Losartana + Metformina apresentam melhor controle pressórico (média 128/82 mmHg) vs. outras combinações (média 142/91 mmHg). Considere padronizar o protocolo.",
   recs:["Agendar retorno urgente para os 5 pacientes com HbA1c > 9%","Implementar rastreio de neuropatia diabética nos 28 pacientes com DM2","Considerar inclusão de ISGLT2 nos 8 pacientes com DM2 + HAS + IMC > 30","Solicitar fundo de olho para os 15 pacientes sem avaliação oftalmológica no último ano"],
 };
+
+/* ── Trilha de Aprendizado ── */
+const trilhaConditions = [
+  { name:"Diabetes Tipo 2", count:28, pct:28, color:"#7C3AED" },
+  { name:"Hipertensão", count:22, pct:22, color:"#9333EA" },
+  { name:"DPOC", count:12, pct:12, color:"#A855F7" },
+  { name:"Lombalgia crônica", count:10, pct:10, color:"#C084FC" },
+  { name:"Depressão / Ansiedade", count:9, pct:9, color:"#D8B4FE" },
+];
+const condutas = {
+  assertivas: [
+    { label:"Solicitação de HbA1c em todos os DM2", pct:94 },
+    { label:"Ajuste de anti-hipertensivo por meta pressórica", pct:88 },
+    { label:"Rastreio de complicações renais em diabéticos", pct:82 },
+    { label:"Prescrição de estatina em DM2 + dislipidemia", pct:79 },
+  ],
+  revisar: [
+    { label:"Rastreio de neuropatia periférica (monofilamento)", pct:38, rec:"Realizar em 100% dos DM2 por visita" },
+    { label:"Orientação sobre atividade física documentada", pct:44, rec:"ADA recomenda 150 min/sem – incluir no plano de cuidado" },
+    { label:"Aplicação do escore SCORE2 em hipertensos > 40 anos", pct:52, rec:"ESC 2024 – aplicar em todos os pacientes com HAS" },
+  ],
+};
+const guidelines = [
+  { title:"ADA 2025 – Padrões de Cuidado em Diabetes", tag:"Novo", tagColor:"#7C3AED", desc:"Novos alvos glicêmicos para idosos e uso expandido de iSGLT2 em insuficiência cardíaca." },
+  { title:"ESC 2024 – Hipertensão Arterial", tag:"Atualizado", tagColor:"#3B82F6", desc:"Estratégia de tratamento combinado inicial para HAS estágio 2; nova tabela de risco SCORE2." },
+  { title:"GOLD 2025 – DPOC", tag:"Novo", tagColor:"#F59E0B", desc:"Revisão dos critérios diagnósticos e novo algoritmo de tratamento baseado em fenótipo." },
+];
+const quizList = [
+  { id:1, title:"Diabetes Tipo 2 – Manejo clínico", questions:8, done:8, score:87, tag:"Concluído", tagColor:"#22C55E", tagBg:"#F0FDF4" },
+  { id:2, title:"Hipertensão – Metas e tratamento", questions:6, done:3, score:null, tag:"Em progresso", tagColor:"#D97706", tagBg:"#FFFBEB" },
+  { id:3, title:"DPOC – Diagnóstico e estadiamento", questions:10, done:0, score:null, tag:"Novo", tagColor:"#7C3AED", tagBg:"#F3F0FF" },
+];
+const mockQuiz = {
+  title:"Hipertensão – Metas e tratamento",
+  questions:[
+    { q:"Qual a meta pressórica recomendada pelo ESC 2024 para pacientes com HAS de alto risco cardiovascular?", opts:["< 140/90 mmHg","< 130/80 mmHg","< 120/70 mmHg","< 135/85 mmHg"], correct:1, exp:"O ESC 2024 recomenda alvo < 130/80 mmHg para pacientes de alto risco, reduzindo o limiar anterior de 140/90 mmHg." },
+    { q:"Qual combinação de anti-hipertensivos é preferida como terapia inicial em HAS estágio 2?", opts:["BRA + tiazídico","IECA + BCC","BB + diurético de alça","BCC + BB isolado"], correct:1, exp:"A combinação IECA/BRA + BCC ou IECA/BRA + tiazídico é recomendada como primeira linha para HAS estágio 2." },
+    { q:"Em pacientes com HAS e DM2, qual a meta de HbA1c que equilibra benefício cardiovascular e risco de hipoglicemia?", opts:["< 6,0%","< 7,0%","< 8,0%","< 9,0%"], correct:1, exp:"HbA1c < 7,0% é o alvo padrão ADA 2025, equilibrando benefício cardiovascular e risco de hipoglicemia na maioria dos pacientes." },
+  ],
+};
+const flashDecks = [
+  { id:1, title:"DM2 – Farmacologia", cards:12, reviewed:8, color:"#7C3AED", tag:"4 pendentes", tagColor:"#D97706" },
+  { id:2, title:"HAS – Metas e Classes", cards:8, reviewed:8, color:"#3B82F6", tag:"Revisado", tagColor:"#16A34A" },
+  { id:3, title:"Neuropatia Diabética", cards:6, reviewed:0, color:"#F59E0B", tag:"Novo", tagColor:"#7C3AED" },
+  { id:4, title:"DPOC – Estadiamento GOLD", cards:10, reviewed:5, color:"#22C55E", tag:"Em andamento", tagColor:"#D97706" },
+];
+const mockFlashcards = [
+  { front:"Quais são os critérios diagnósticos de DM2?", back:"Glicemia de jejum ≥ 126 mg/dL em 2 ocasiões\nOU HbA1c ≥ 6,5%\nOU glicemia 2h pós-TOTG ≥ 200 mg/dL\nOU glicemia aleatória ≥ 200 mg/dL com sintomas clássicos" },
+  { front:"Quando iniciar metformina no DM2?", back:"Imediatamente ao diagnóstico (se tolerada)\nAssociada a mudança de estilo de vida\nContraindicada: TFG < 30 mL/min/1,73m²\nReduzir dose se TFG entre 30-45 mL/min" },
+  { front:"Quais iSGLT2 têm benefício cardiovascular comprovado em DM2?", back:"Empagliflozina (EMPA-REG OUTCOME)\nCanagliflozina (CANVAS, CREDENCE)\nDapagliflozina (DECLARE-TIMI 58)\nBenefício adicional: ↓ hospitalização por IC e progressão renal" },
+  { front:"Meta de HbA1c no DM2 – adulto sem comorbidades relevantes", back:"< 7,0% (padrão ADA 2025)\nMais rigoroso (< 6,5%): jovens, curta duração de DM, sem risco de hipoglicemia\nMenos rigoroso (< 8,0%): idosos frágeis ou com expectativa de vida reduzida" },
+];
+
+const portalDocs = [
+  { id:1, name:"Hemograma completo", type:"Exame", date:"20/02/2026", source:"Fleury Laboratórios", sourceType:"lab", status:"normal" },
+  { id:2, name:"HbA1c – 7.1%", type:"Exame", date:"20/02/2026", source:"Fleury Laboratórios", sourceType:"lab", status:"atenção" },
+  { id:3, name:"Anamnese padrão", type:"Consulta", date:"04/05/2025", source:"Dr. Luca Becari", sourceType:"doctor", status:null },
+  { id:4, name:"Atestado Médico", type:"Atestado", date:"04/05/2025", source:"Dr. Luca Becari", sourceType:"doctor", status:null },
+  { id:5, name:"Prescrição – Metformina 500mg", type:"Prescrição", date:"15/01/2025", source:"Dr. Luca Becari", sourceType:"doctor", status:null },
+  { id:6, name:"Perfil lipídico completo", type:"Exame", date:"03/08/2024", source:"Dasa", sourceType:"lab", status:"normal" },
+  { id:7, name:"Pedido de exames", type:"Pedido", date:"03/08/2024", source:"Dr. Luca Becari", sourceType:"doctor", status:null },
+  { id:8, name:"ECG de repouso", type:"Exame", date:"12/06/2024", source:"Hermes Pardini", sourceType:"lab", status:"normal" },
+];
+const portalLabs = [
+  { id:"fleury", name:"Fleury Laboratórios", abbr:"FL", connected:true, results:2, lastSync:"Hoje, 08:30", color:"#0066CC" },
+  { id:"dasa", name:"Dasa", abbr:"DA", connected:true, results:1, lastSync:"03/08/2024", color:"#E63946" },
+  { id:"pardini", name:"Hermes Pardini", abbr:"HP", connected:false, results:0, lastSync:null, color:"#2D6A4F" },
+  { id:"einstein", name:"Albert Einstein", abbr:"AE", connected:false, results:0, lastSync:null, color:"#7C3AED" },
+];
 
 /* ═══════════════════════════════════════════
    REUSABLE COMPONENTS
@@ -178,6 +259,48 @@ export default function VOAApp() {
   const [dashPrompt, setDashPrompt] = useState("");
   const [reportState, setReportState] = useState("config"); // config | loading | done
 
+  // Portal do Paciente
+  const [portalTab, setPortalTab] = useState("docs"); // docs | add | labs
+  const [portalDocFilter, setPortalDocFilter] = useState("Todos");
+  const [portalSelectedDoc, setPortalSelectedDoc] = useState(null);
+
+  // Trilha de Aprendizado
+  const [trilhaTab, setTrilhaTab] = useState("overview"); // overview | quiz | flashcards
+  const [quizMode, setQuizMode] = useState(null); // null | "active" | "done"
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [quizAnswers, setQuizAnswers] = useState([]);
+  const [flashMode, setFlashMode] = useState(null); // null | "active"
+  const [activeDeck, setActiveDeck] = useState(null);
+  const [currentCard, setCurrentCard] = useState(0);
+  const [cardFlipped, setCardFlipped] = useState(false);
+
+  const handleAnswerSelect = (idx) => {
+    if (selectedAnswer !== null) return;
+    setSelectedAnswer(idx);
+    setQuizAnswers(a => [...a, idx]);
+  };
+  const handleNextQuestion = () => {
+    if (currentQuestion + 1 >= mockQuiz.questions.length) {
+      setQuizMode("done");
+    } else {
+      setCurrentQuestion(q => q + 1);
+      setSelectedAnswer(null);
+    }
+  };
+  const handleStartQuiz = () => {
+    setCurrentQuestion(0);
+    setSelectedAnswer(null);
+    setQuizAnswers([]);
+    setQuizMode("active");
+  };
+  const handleOpenDeck = (deck) => {
+    setActiveDeck(deck);
+    setCurrentCard(0);
+    setCardFlipped(false);
+    setFlashMode("active");
+  };
+
   const filteredPatients = useMemo(() => {
     let r = patients;
     if (patSearch) { const s = patSearch.toLowerCase(); r = r.filter(p => p.name.toLowerCase().includes(s) || p.conditions.some(c => c.toLowerCase().includes(s))); }
@@ -205,6 +328,9 @@ export default function VOAApp() {
         <NavIcon active={page==="patients"} onClick={()=>{setPage("patients");setRightPanel(null);}} icon={<I.Users />} />
         <NavIcon active={page==="consulta"} onClick={()=>{setPage("consulta");setRightPanel(null);setConsultaMode("new");}} icon={<I.Clipboard />} />
         <NavIcon active={page==="charcot"} onClick={()=>{setPage("charcot");setRightPanel(null);}} icon={<I.Chat />} />
+        <div style={{ width:24,height:1,backgroundColor:"#EBEBEB",margin:"6px 0" }} />
+        <NavIcon active={page==="portal"} onClick={()=>{setPage("portal");setRightPanel(null);setPortalTab("docs");}} icon={<I.Person />} badge={false} />
+        <NavIcon active={page==="trilha"} onClick={()=>{setPage("trilha");setRightPanel(null);setTrilhaTab("overview");setQuizMode(null);setFlashMode(null);}} icon={<I.BookOpen />} />
         <div style={{ flex:1 }} />
         <NavIcon icon={<I.Settings />} />
         <div style={{ width:34,height:34,borderRadius:"50%",backgroundColor:"#E0D4F5",display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:"#7C3AED",marginBottom:12,cursor:"pointer",position:"relative" }}>
@@ -234,6 +360,18 @@ export default function VOAApp() {
                 color:page===n.key?"#7C3AED":"#555",fontWeight:page===n.key?600:500,fontSize:14,transition:"all 0.15s"
               }}>{n.icon} {n.label}</div>
             ))}
+          <div style={{ height:1,backgroundColor:"#EBEBEB",margin:"6px 2px" }} />
+          <div style={{ fontSize:10,fontWeight:700,color:"#BDBDBD",textTransform:"uppercase",letterSpacing:0.8,padding:"4px 12px 2px" }}>Ferramentas</div>
+          <div onClick={()=>{setPage("portal");setPortalTab("docs");}} style={{
+            display:"flex",alignItems:"center",gap:8,padding:"10px 12px",borderRadius:10,cursor:"pointer",marginBottom:2,
+            backgroundColor:page==="portal"?"#F3F0FF":"transparent",
+            color:page==="portal"?"#7C3AED":"#555",fontWeight:page==="portal"?600:500,fontSize:14,transition:"all 0.15s"
+          }}><I.Person s={16}/> Portal do Paciente</div>
+          <div onClick={()=>{setPage("trilha");setTrilhaTab("overview");setQuizMode(null);setFlashMode(null);}} style={{
+            display:"flex",alignItems:"center",gap:8,padding:"10px 12px",borderRadius:10,cursor:"pointer",marginBottom:2,
+            backgroundColor:page==="trilha"?"#F3F0FF":"transparent",
+            color:page==="trilha"?"#7C3AED":"#555",fontWeight:page==="trilha"?600:500,fontSize:14,transition:"all 0.15s"
+          }}><I.BookOpen s={16}/> Trilha de Aprendizado</div>
           </div>
 
           {/* Page-specific sidebar content */}
@@ -283,6 +421,42 @@ export default function VOAApp() {
                   <div style={{ fontWeight:600,fontSize:13,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap" }}>Identificação de Red Flags Clíni...</div>
                   <div style={{ fontSize:11,color:"#888",marginTop:1,display:"flex",alignItems:"center",gap:3 }}>10:51 • <I.Grid /></div>
                 </div>
+              </>
+            )}
+            {page === "trilha" && (
+              <>
+                <div style={{ fontSize:11,fontWeight:600,color:"#999",textTransform:"uppercase",letterSpacing:0.5,marginBottom:8 }}>Progresso</div>
+                <div style={{ padding:"12px 10px",borderRadius:10,backgroundColor:"#F3F0FF",marginBottom:10 }}>
+                  <div style={{ fontSize:12,fontWeight:700,color:"#7C3AED",marginBottom:6 }}>🔥 Streak: 7 dias</div>
+                  <div style={{ fontSize:11,color:"#888",marginBottom:6 }}>Assertividade geral: <strong style={{color:"#22C55E"}}>82%</strong></div>
+                  <div style={{ height:6,backgroundColor:"#E0D4F5",borderRadius:3 }}><div style={{ height:"100%",width:"82%",backgroundColor:"#7C3AED",borderRadius:3 }}/></div>
+                </div>
+                <div style={{ fontSize:11,fontWeight:600,color:"#999",textTransform:"uppercase",letterSpacing:0.5,marginBottom:8 }}>Flashcard decks</div>
+                {flashDecks.map(d=>(
+                  <div key={d.id} style={{ display:"flex",alignItems:"center",gap:8,padding:"7px 8px",borderRadius:8,cursor:"pointer",marginBottom:2 }} onClick={()=>{setPage("trilha");setTrilhaTab("flashcards");setFlashMode(null);}}>
+                    <div style={{ width:8,height:8,borderRadius:2,flexShrink:0,backgroundColor:d.color }}/>
+                    <div style={{ flex:1,minWidth:0 }}>
+                      <div style={{ fontSize:12,fontWeight:500,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap" }}>{d.title}</div>
+                      <div style={{ fontSize:10,color:"#999" }}>{d.reviewed}/{d.cards} revisados</div>
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
+            {page === "portal" && (
+              <>
+                <div style={{ fontSize:11,fontWeight:600,color:"#999",textTransform:"uppercase",letterSpacing:0.5,marginBottom:8 }}>Documentos recentes</div>
+                {portalDocs.slice(0,5).map(d=>(
+                  <div key={d.id} style={{ display:"flex",alignItems:"center",gap:8,padding:"7px 8px",borderRadius:8,cursor:"pointer",marginBottom:2 }}>
+                    <div style={{ width:26,height:26,borderRadius:7,flexShrink:0,backgroundColor:d.sourceType==="lab"?"#EFF6FF":"#F0EBF8",color:d.sourceType==="lab"?"#3B82F6":"#7C3AED",display:"flex",alignItems:"center",justifyContent:"center" }}>
+                      {d.sourceType==="lab"?<I.Beaker s={11}/>:<I.Doc s={11}/>}
+                    </div>
+                    <div style={{ flex:1,minWidth:0 }}>
+                      <div style={{ fontSize:12,fontWeight:500,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap" }}>{d.name}</div>
+                      <div style={{ fontSize:10,color:"#999" }}>{d.date}</div>
+                    </div>
+                  </div>
+                ))}
               </>
             )}
           </div>
@@ -524,6 +698,630 @@ export default function VOAApp() {
             <div style={{position:"absolute",bottom:20,left:0,right:0,textAlign:"center",fontSize:13,color:"#999"}}>O Charcot pode cometer erros. Sempre confira as respostas.</div>
           </div>
         )}
+        {/* ──────── TRILHA DE APRENDIZADO ──────── */}
+        {page === "trilha" && (
+          <>
+            {/* Header */}
+            <div style={{ padding:"20px 28px 16px", backgroundColor:"#fff", borderBottom:"1px solid #EBEBEB", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+              <div>
+                <h1 style={{ fontSize:24, fontWeight:700, margin:0, letterSpacing:-0.5 }}>Trilha de Aprendizado</h1>
+                <p style={{ fontSize:13, color:"#888", margin:"4px 0 0" }}>Baseada na sua prática clínica real • Atualizada há 2h</p>
+              </div>
+              <div style={{ display:"flex", gap:10 }}>
+                <button onClick={()=>setRightPanel("trilhaCharcot")} style={{ display:"flex", alignItems:"center", gap:6, padding:"9px 18px", border:"1px solid #E0E0E0", borderRadius:9, backgroundColor:"#fff", cursor:"pointer", fontSize:14, fontWeight:500, color:"#555" }}>
+                  <I.Sparkle s={15}/> Pedir ao Charcot
+                </button>
+                <button onClick={()=>{setTrilhaTab("quiz");setQuizMode(null);}} style={{ display:"flex", alignItems:"center", gap:6, padding:"9px 18px", border:"none", borderRadius:9, cursor:"pointer", fontSize:14, fontWeight:600, background:"linear-gradient(135deg,#9333EA,#7C3AED)", color:"#fff" }}>
+                  <I.CheckSquare s={16}/> Criar quiz
+                </button>
+              </div>
+            </div>
+
+            {/* Tab bar */}
+            <div style={{ padding:"0 28px", backgroundColor:"#fff", borderBottom:"1px solid #EBEBEB", display:"flex" }}>
+              {[
+                { key:"overview", label:"Visão Geral", icon:<I.Target s={14}/> },
+                { key:"quiz", label:"Quiz", icon:<I.CheckSquare s={14}/> },
+                { key:"flashcards", label:"Flashcards", icon:<I.Layers s={14}/> },
+              ].map(t => (
+                <button key={t.key} onClick={()=>{ setTrilhaTab(t.key); if(t.key==="quiz")setQuizMode(null); if(t.key==="flashcards")setFlashMode(null); }} style={{
+                  display:"flex", alignItems:"center", gap:6, padding:"13px 18px", border:"none", backgroundColor:"transparent",
+                  borderBottom: trilhaTab===t.key ? "2px solid #7C3AED" : "2px solid transparent",
+                  color: trilhaTab===t.key ? "#7C3AED" : "#666",
+                  fontWeight: trilhaTab===t.key ? 600 : 400,
+                  fontSize:14, cursor:"pointer", fontFamily:"inherit", transition:"all 0.15s"
+                }}>{t.icon} {t.label}</button>
+              ))}
+            </div>
+
+            <div style={{ flex:1, overflow:"auto", padding:"20px 28px" }}>
+
+              {/* ═══ VISÃO GERAL ═══ */}
+              {trilhaTab === "overview" && (
+                <>
+                  {/* KPI cards */}
+                  <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:14, marginBottom:24 }}>
+                    {[
+                      { l:"Casos atendidos", v:"100", sub:"últimos 6 meses", icon:<I.Users s={17}/>, cl:"#7C3AED" },
+                      { l:"Assertividade geral", v:"82%", sub:"↑ 4% vs. trimestre anterior", icon:<I.Target s={17}/>, cl:"#22C55E" },
+                      { l:"Flashcards revisados", v:"34", sub:"de 36 disponíveis", icon:<I.Layers s={17}/>, cl:"#3B82F6" },
+                      { l:"Streak de estudo", v:"7 dias", sub:"🔥 seu recorde é 14 dias", icon:<I.Zap s={17}/>, cl:"#F59E0B" },
+                    ].map((c,i) => (
+                      <div key={i} style={{ backgroundColor:"#fff", borderRadius:13, padding:"18px 20px", border:"1px solid #E8E8E8", position:"relative", overflow:"hidden" }}>
+                        <div style={{ position:"absolute", top:14, right:14, width:34, height:34, borderRadius:9, backgroundColor:c.cl+"15", color:c.cl, display:"flex", alignItems:"center", justifyContent:"center" }}>{c.icon}</div>
+                        <div style={{ fontSize:11, color:"#888", marginBottom:5, fontWeight:500 }}>{c.l}</div>
+                        <div style={{ fontSize:26, fontWeight:700, letterSpacing:-1, marginBottom:4 }}>{c.v}</div>
+                        <div style={{ fontSize:11, color:"#999" }}>{c.sub}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Condutas */}
+                  <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16, marginBottom:24 }}>
+                    {/* Assertivas */}
+                    <div style={{ backgroundColor:"#fff", borderRadius:13, padding:"20px", border:"1px solid #E8E8E8" }}>
+                      <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:16 }}>
+                        <div style={{ width:30, height:30, borderRadius:8, backgroundColor:"#F0FDF4", color:"#22C55E", display:"flex", alignItems:"center", justifyContent:"center" }}><I.Target s={16}/></div>
+                        <div>
+                          <div style={{ fontSize:15, fontWeight:700 }}>Condutas assertivas</div>
+                          <div style={{ fontSize:11, color:"#888" }}>O que você está fazendo bem</div>
+                        </div>
+                      </div>
+                      {condutas.assertivas.map((c,i) => (
+                        <div key={i} style={{ marginBottom:14 }}>
+                          <div style={{ display:"flex", justifyContent:"space-between", marginBottom:5 }}>
+                            <span style={{ fontSize:13, color:"#333", lineHeight:1.4 }}>{c.label}</span>
+                            <span style={{ fontSize:13, fontWeight:700, color:"#22C55E", flexShrink:0, marginLeft:8 }}>{c.pct}%</span>
+                          </div>
+                          <div style={{ height:6, backgroundColor:"#F0F0F0", borderRadius:3 }}>
+                            <div style={{ height:"100%", width:`${c.pct}%`, backgroundColor:"#22C55E", borderRadius:3 }}/>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Revisar */}
+                    <div style={{ backgroundColor:"#fff", borderRadius:13, padding:"20px", border:"1px solid #E8E8E8" }}>
+                      <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:16 }}>
+                        <div style={{ width:30, height:30, borderRadius:8, backgroundColor:"#FFFBEB", color:"#D97706", display:"flex", alignItems:"center", justifyContent:"center" }}><I.Alert s={16}/></div>
+                        <div>
+                          <div style={{ fontSize:15, fontWeight:700 }}>O que revisar</div>
+                          <div style={{ fontSize:11, color:"#888" }}>Oportunidades de melhora</div>
+                        </div>
+                      </div>
+                      {condutas.revisar.map((c,i) => (
+                        <div key={i} style={{ marginBottom:14 }}>
+                          <div style={{ display:"flex", justifyContent:"space-between", marginBottom:5 }}>
+                            <span style={{ fontSize:13, color:"#333", lineHeight:1.4 }}>{c.label}</span>
+                            <span style={{ fontSize:13, fontWeight:700, color:"#F59E0B", flexShrink:0, marginLeft:8 }}>{c.pct}%</span>
+                          </div>
+                          <div style={{ height:6, backgroundColor:"#F0F0F0", borderRadius:3 }}>
+                            <div style={{ height:"100%", width:`${c.pct}%`, backgroundColor:"#FCD34D", borderRadius:3 }}/>
+                          </div>
+                          <div style={{ fontSize:11, color:"#888", marginTop:4, fontStyle:"italic" }}>→ {c.rec}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Condições + Diretrizes + Charcot */}
+                  <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:16, marginBottom:24 }}>
+                    {/* Condições prevalentes */}
+                    <div style={{ backgroundColor:"#fff", borderRadius:13, padding:"20px", border:"1px solid #E8E8E8" }}>
+                      <div style={{ fontSize:15, fontWeight:700, marginBottom:4 }}>Condições mais atendidas</div>
+                      <div style={{ fontSize:12, color:"#888", marginBottom:16 }}>Últimos 6 meses</div>
+                      {trilhaConditions.map((c,i) => (
+                        <div key={i} style={{ marginBottom:12 }}>
+                          <div style={{ display:"flex", justifyContent:"space-between", marginBottom:4 }}>
+                            <span style={{ fontSize:13 }}>{c.name}</span>
+                            <span style={{ fontSize:12, fontWeight:700, color:"#555" }}>{c.count}</span>
+                          </div>
+                          <div style={{ height:7, backgroundColor:"#F3F0FF", borderRadius:4 }}>
+                            <div style={{ height:"100%", width:`${c.pct}%`, backgroundColor:c.color, borderRadius:4 }}/>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Novas diretrizes */}
+                    <div style={{ backgroundColor:"#fff", borderRadius:13, padding:"20px", border:"1px solid #E8E8E8" }}>
+                      <div style={{ fontSize:15, fontWeight:700, marginBottom:4 }}>Novas diretrizes</div>
+                      <div style={{ fontSize:12, color:"#888", marginBottom:16 }}>Relevantes para sua prática</div>
+                      {guidelines.map((g,i) => (
+                        <div key={i} style={{ padding:"12px 14px", borderRadius:9, border:"1px solid #F0F0F0", marginBottom:8, cursor:"pointer" }}>
+                          <div style={{ display:"flex", alignItems:"center", gap:6, marginBottom:6 }}>
+                            <span style={{ fontSize:10, padding:"2px 7px", borderRadius:4, fontWeight:700, backgroundColor:g.tagColor+"18", color:g.tagColor }}>{g.tag}</span>
+                          </div>
+                          <div style={{ fontSize:13, fontWeight:600, marginBottom:4, lineHeight:1.3 }}>{g.title}</div>
+                          <div style={{ fontSize:11, color:"#888", lineHeight:1.4 }}>{g.desc}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Charcot sugere */}
+                    <div style={{ background:"linear-gradient(145deg,#7C3AED,#5B21B6)", borderRadius:13, padding:"20px" }}>
+                      <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:14 }}>
+                        <I.Sparkle s={16}/>
+                        <span style={{ fontSize:15, fontWeight:700, color:"#fff" }}>Charcot sugere</span>
+                      </div>
+                      <div style={{ fontSize:13, color:"rgba(255,255,255,0.9)", lineHeight:1.6, marginBottom:16 }}>
+                        Com base na sua prática, <strong>3 condutas</strong> abaixo da meta e <strong>2 diretrizes novas</strong> relevantes foram identificadas. Quer um plano de estudo personalizado?
+                      </div>
+                      {["Criar quiz sobre neuropatia diabética","Gerar flashcards de HAS 2024","Revisar protocolo de monofilamento"].map((s,i) => (
+                        <button key={i} onClick={()=>setRightPanel("trilhaCharcot")} style={{ width:"100%", display:"flex", alignItems:"center", gap:7, padding:"9px 12px", border:"1px solid rgba(255,255,255,0.25)", borderRadius:8, backgroundColor:"rgba(255,255,255,0.1)", cursor:"pointer", fontSize:12, color:"#fff", textAlign:"left", fontFamily:"inherit", marginBottom:6 }}>
+                          <I.Sparkle s={12}/> {s}
+                        </button>
+                      ))}
+                      <button onClick={()=>setRightPanel("trilhaCharcot")} style={{ width:"100%", marginTop:4, padding:"10px 0", border:"2px solid rgba(255,255,255,0.4)", borderRadius:9, backgroundColor:"transparent", cursor:"pointer", fontSize:13, fontWeight:600, color:"#fff", fontFamily:"inherit" }}>
+                        Abrir Charcot →
+                      </button>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {/* ═══ QUIZ ═══ */}
+              {trilhaTab === "quiz" && (
+                <>
+                  {/* Lista de quizzes */}
+                  {quizMode === null && (
+                    <>
+                      <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:20 }}>
+                        <div>
+                          <div style={{ fontSize:16, fontWeight:700 }}>Seus quizzes</div>
+                          <div style={{ fontSize:13, color:"#888", marginTop:2 }}>Personalizados com base na sua prática clínica real.</div>
+                        </div>
+                        <button onClick={()=>setRightPanel("trilhaCharcot")} style={{ display:"flex", alignItems:"center", gap:6, padding:"9px 18px", border:"none", borderRadius:9, cursor:"pointer", fontSize:14, fontWeight:600, background:"linear-gradient(135deg,#9333EA,#7C3AED)", color:"#fff" }}>
+                          <I.Sparkle s={15}/> Criar com Charcot
+                        </button>
+                      </div>
+                      <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
+                        {quizList.map(q => (
+                          <div key={q.id} style={{ display:"flex", alignItems:"center", gap:16, padding:"18px 22px", backgroundColor:"#fff", borderRadius:13, border:"1px solid #E8E8E8" }}>
+                            <div style={{ width:44, height:44, borderRadius:11, backgroundColor:"#F3F0FF", color:"#7C3AED", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+                              <I.CheckSquare s={20}/>
+                            </div>
+                            <div style={{ flex:1 }}>
+                              <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:5 }}>
+                                <span style={{ fontWeight:600, fontSize:15 }}>{q.title}</span>
+                                <span style={{ fontSize:10, padding:"2px 8px", borderRadius:4, fontWeight:700, backgroundColor:q.tagBg, color:q.tagColor }}>{q.tag}</span>
+                              </div>
+                              <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                                <span style={{ fontSize:12, color:"#888" }}>{q.done}/{q.questions} questões</span>
+                                {q.score !== null && <span style={{ fontSize:12, fontWeight:700, color:"#22C55E" }}>Nota: {q.score}%</span>}
+                                <div style={{ flex:1, maxWidth:120, height:5, backgroundColor:"#F0F0F0", borderRadius:3 }}>
+                                  <div style={{ height:"100%", width:`${(q.done/q.questions)*100}%`, backgroundColor:q.score?"#22C55E":"#7C3AED", borderRadius:3 }}/>
+                                </div>
+                              </div>
+                            </div>
+                            <button onClick={handleStartQuiz} style={{ padding:"8px 18px", border:"none", borderRadius:8, cursor:"pointer", fontSize:13, fontWeight:600, background: q.done===q.questions ? "#F3F0FF" : "linear-gradient(135deg,#9333EA,#7C3AED)", color: q.done===q.questions ? "#7C3AED" : "#fff", fontFamily:"inherit" }}>
+                              {q.done===q.questions ? <span style={{display:"flex",alignItems:"center",gap:4}}><I.RotateCcw s={13}/> Refazer</span> : q.done>0 ? "Continuar →" : "Iniciar →"}
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* CTA Charcot */}
+                      <div style={{ marginTop:20, padding:"20px 24px", backgroundColor:"#F9F7FF", borderRadius:13, border:"1px dashed #C4B5FD", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+                        <div>
+                          <div style={{ fontSize:14, fontWeight:700, marginBottom:4 }}>Quer um quiz personalizado?</div>
+                          <div style={{ fontSize:13, color:"#888" }}>O Charcot cria questões baseadas nos seus casos reais e nas diretrizes mais recentes.</div>
+                        </div>
+                        <button onClick={()=>setRightPanel("trilhaCharcot")} style={{ display:"flex", alignItems:"center", gap:6, padding:"10px 20px", border:"none", borderRadius:9, cursor:"pointer", fontSize:14, fontWeight:600, background:"linear-gradient(135deg,#9333EA,#7C3AED)", color:"#fff", flexShrink:0 }}>
+                          <I.Sparkle s={15}/> Gerar quiz
+                        </button>
+                      </div>
+                    </>
+                  )}
+
+                  {/* Quiz ativo */}
+                  {quizMode === "active" && (
+                    <div style={{ maxWidth:640, margin:"0 auto" }}>
+                      <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:24 }}>
+                        <button onClick={()=>setQuizMode(null)} style={{ background:"none", border:"none", cursor:"pointer", color:"#666", display:"flex", padding:0 }}><I.ChevLeft s={18}/></button>
+                        <div style={{ flex:1 }}>
+                          <div style={{ fontSize:15, fontWeight:700 }}>{mockQuiz.title}</div>
+                          <div style={{ fontSize:12, color:"#888", marginTop:2 }}>Questão {currentQuestion+1} de {mockQuiz.questions.length}</div>
+                        </div>
+                        <span style={{ fontSize:12, fontWeight:600, color:"#7C3AED" }}>{Math.round(((currentQuestion)/(mockQuiz.questions.length))*100)}%</span>
+                      </div>
+                      {/* Progress bar */}
+                      <div style={{ height:6, backgroundColor:"#F0F0F0", borderRadius:3, marginBottom:28 }}>
+                        <div style={{ height:"100%", width:`${((currentQuestion)/(mockQuiz.questions.length))*100}%`, backgroundColor:"#7C3AED", borderRadius:3, transition:"width 0.3s" }}/>
+                      </div>
+
+                      <div style={{ backgroundColor:"#fff", borderRadius:14, padding:"28px 28px 24px", border:"1px solid #E8E8E8", marginBottom:16 }}>
+                        <div style={{ fontSize:17, fontWeight:600, lineHeight:1.5, marginBottom:24, color:"#1a1a1a" }}>
+                          {mockQuiz.questions[currentQuestion].q}
+                        </div>
+                        <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
+                          {mockQuiz.questions[currentQuestion].opts.map((opt, idx) => {
+                            const isSelected = selectedAnswer === idx;
+                            const isCorrect = idx === mockQuiz.questions[currentQuestion].correct;
+                            const revealed = selectedAnswer !== null;
+                            let bg = "#FAFAFA", border = "1px solid #E0E0E0", color = "#333";
+                            if (revealed && isCorrect) { bg="#F0FDF4"; border="2px solid #22C55E"; color="#166534"; }
+                            else if (revealed && isSelected && !isCorrect) { bg="#FEF2F2"; border="2px solid #EF4444"; color="#991B1B"; }
+                            return (
+                              <button key={idx} onClick={()=>handleAnswerSelect(idx)} style={{ display:"flex", alignItems:"center", gap:12, padding:"14px 16px", border, borderRadius:10, backgroundColor:bg, cursor:revealed?"default":"pointer", fontSize:14, color, textAlign:"left", fontFamily:"inherit", transition:"all 0.2s" }}>
+                                <div style={{ width:24, height:24, borderRadius:"50%", flexShrink:0, backgroundColor: revealed&&isCorrect?"#22C55E":revealed&&isSelected&&!isCorrect?"#EF4444":"#E8E8E8", color: revealed&&(isCorrect||(isSelected&&!isCorrect))?"#fff":"#666", display:"flex", alignItems:"center", justifyContent:"center", fontSize:11, fontWeight:700 }}>
+                                  {revealed && isCorrect ? "✓" : revealed && isSelected && !isCorrect ? "✗" : String.fromCharCode(65+idx)}
+                                </div>
+                                {opt}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      {selectedAnswer !== null && (
+                        <>
+                          <div style={{ padding:"14px 18px", backgroundColor:"#F3F0FF", borderRadius:10, border:"1px solid #DDD6FE", marginBottom:16, display:"flex", gap:10 }}>
+                            <div style={{ color:"#7C3AED", flexShrink:0, marginTop:1 }}><I.Sparkle s={16}/></div>
+                            <div style={{ fontSize:13, lineHeight:1.6, color:"#4C1D95" }}>
+                              <strong>Charcot explica:</strong> {mockQuiz.questions[currentQuestion].exp}
+                            </div>
+                          </div>
+                          <button onClick={handleNextQuestion} style={{ width:"100%", padding:"13px 0", border:"none", borderRadius:10, background:"linear-gradient(135deg,#9333EA,#7C3AED)", color:"#fff", fontWeight:600, fontSize:15, cursor:"pointer", fontFamily:"inherit" }}>
+                            {currentQuestion+1 < mockQuiz.questions.length ? "Próxima questão →" : "Ver resultado →"}
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Resultado do quiz */}
+                  {quizMode === "done" && (
+                    <div style={{ maxWidth:560, margin:"0 auto", textAlign:"center" }}>
+                      <div style={{ fontSize:48, marginBottom:12 }}>🏆</div>
+                      <div style={{ fontSize:22, fontWeight:700, marginBottom:6 }}>Quiz concluído!</div>
+                      <div style={{ fontSize:14, color:"#888", marginBottom:28 }}>{mockQuiz.title}</div>
+                      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:12, marginBottom:28 }}>
+                        {[
+                          { l:"Acertos", v:`${quizAnswers.filter((a,i)=>a===mockQuiz.questions[i]?.correct).length}/${mockQuiz.questions.length}`, c:"#22C55E" },
+                          { l:"Aproveitamento", v:`${Math.round((quizAnswers.filter((a,i)=>a===mockQuiz.questions[i]?.correct).length/mockQuiz.questions.length)*100)}%`, c:"#7C3AED" },
+                          { l:"Pontuação", v:"A+", c:"#3B82F6" },
+                        ].map((s,i)=>(
+                          <div key={i} style={{ backgroundColor:"#fff", borderRadius:12, padding:"20px 16px", border:"1px solid #E8E8E8" }}>
+                            <div style={{ fontSize:28, fontWeight:700, color:s.c, marginBottom:4 }}>{s.v}</div>
+                            <div style={{ fontSize:12, color:"#888" }}>{s.l}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <div style={{ display:"flex", gap:10, justifyContent:"center" }}>
+                        <button onClick={handleStartQuiz} style={{ display:"flex", alignItems:"center", gap:6, padding:"10px 22px", border:"1px solid #E0E0E0", borderRadius:9, backgroundColor:"#fff", cursor:"pointer", fontSize:14, fontWeight:500, color:"#555", fontFamily:"inherit" }}>
+                          <I.RotateCcw s={14}/> Refazer
+                        </button>
+                        <button onClick={()=>setQuizMode(null)} style={{ display:"flex", alignItems:"center", gap:6, padding:"10px 22px", border:"none", borderRadius:9, cursor:"pointer", fontSize:14, fontWeight:600, background:"linear-gradient(135deg,#9333EA,#7C3AED)", color:"#fff", fontFamily:"inherit" }}>
+                          Ver outros quizzes
+                        </button>
+                        <button onClick={()=>setRightPanel("trilhaCharcot")} style={{ display:"flex", alignItems:"center", gap:6, padding:"10px 22px", border:"1px solid #7C3AED", borderRadius:9, backgroundColor:"#F3F0FF", cursor:"pointer", fontSize:14, fontWeight:600, color:"#7C3AED", fontFamily:"inherit" }}>
+                          <I.Sparkle s={14}/> Analisar com Charcot
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
+
+              {/* ═══ FLASHCARDS ═══ */}
+              {trilhaTab === "flashcards" && (
+                <>
+                  {/* Lista de decks */}
+                  {flashMode === null && (
+                    <>
+                      <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:20 }}>
+                        <div>
+                          <div style={{ fontSize:16, fontWeight:700 }}>Seus decks de flashcards</div>
+                          <div style={{ fontSize:13, color:"#888", marginTop:2 }}>Revise conceitos-chave baseados na sua prática clínica.</div>
+                        </div>
+                        <button onClick={()=>setRightPanel("trilhaCharcot")} style={{ display:"flex", alignItems:"center", gap:6, padding:"9px 18px", border:"none", borderRadius:9, cursor:"pointer", fontSize:14, fontWeight:600, background:"linear-gradient(135deg,#9333EA,#7C3AED)", color:"#fff" }}>
+                          <I.Sparkle s={15}/> Criar deck
+                        </button>
+                      </div>
+                      <div style={{ display:"grid", gridTemplateColumns:"repeat(2,1fr)", gap:14, marginBottom:20 }}>
+                        {flashDecks.map(d => (
+                          <div key={d.id} style={{ backgroundColor:"#fff", borderRadius:13, padding:"20px 22px", border:"1px solid #E8E8E8", cursor:"pointer" }} onClick={()=>handleOpenDeck(d)}>
+                            <div style={{ display:"flex", alignItems:"flex-start", justifyContent:"space-between", marginBottom:16 }}>
+                              <div style={{ width:42, height:42, borderRadius:11, backgroundColor:d.color+"18", color:d.color, display:"flex", alignItems:"center", justifyContent:"center" }}>
+                                <I.Layers s={20}/>
+                              </div>
+                              <span style={{ fontSize:10, padding:"3px 8px", borderRadius:5, fontWeight:700, backgroundColor:d.tagColor+"18", color:d.tagColor }}>{d.tag}</span>
+                            </div>
+                            <div style={{ fontSize:15, fontWeight:700, marginBottom:5 }}>{d.title}</div>
+                            <div style={{ fontSize:12, color:"#888", marginBottom:14 }}>{d.reviewed}/{d.cards} revisados</div>
+                            <div style={{ height:6, backgroundColor:"#F0F0F0", borderRadius:3, marginBottom:14 }}>
+                              <div style={{ height:"100%", width:`${Math.round((d.reviewed/d.cards)*100)}%`, backgroundColor:d.color, borderRadius:3 }}/>
+                            </div>
+                            <button style={{ width:"100%", padding:"9px 0", border:"none", borderRadius:8, cursor:"pointer", fontSize:13, fontWeight:600, background:`linear-gradient(135deg,${d.color}dd,${d.color})`, color:"#fff", fontFamily:"inherit" }}>
+                              {d.reviewed===d.cards ? "Revisar novamente" : "Continuar revisão →"}
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div style={{ padding:"20px 24px", backgroundColor:"#F9F7FF", borderRadius:13, border:"1px dashed #C4B5FD", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+                        <div>
+                          <div style={{ fontSize:14, fontWeight:700, marginBottom:4 }}>Criar novos flashcards</div>
+                          <div style={{ fontSize:13, color:"#888" }}>O Charcot gera cartões baseados nos seus casos, nas diretrizes e nos pontos que você precisa revisar.</div>
+                        </div>
+                        <button onClick={()=>setRightPanel("trilhaCharcot")} style={{ display:"flex", alignItems:"center", gap:6, padding:"10px 20px", border:"none", borderRadius:9, cursor:"pointer", fontSize:14, fontWeight:600, background:"linear-gradient(135deg,#9333EA,#7C3AED)", color:"#fff", flexShrink:0 }}>
+                          <I.Sparkle s={15}/> Gerar flashcards
+                        </button>
+                      </div>
+                    </>
+                  )}
+
+                  {/* Revisão de deck */}
+                  {flashMode === "active" && activeDeck && (
+                    <div style={{ maxWidth:600, margin:"0 auto" }}>
+                      <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:20 }}>
+                        <button onClick={()=>{setFlashMode(null);setCardFlipped(false);}} style={{ background:"none", border:"none", cursor:"pointer", color:"#666", display:"flex", padding:0 }}><I.ChevLeft s={18}/></button>
+                        <div style={{ flex:1 }}>
+                          <div style={{ fontSize:15, fontWeight:700 }}>{activeDeck.title}</div>
+                          <div style={{ fontSize:12, color:"#888", marginTop:1 }}>Cartão {currentCard+1} de {mockFlashcards.length}</div>
+                        </div>
+                        <button onClick={()=>setRightPanel("trilhaCharcot")} style={{ display:"flex", alignItems:"center", gap:5, padding:"6px 12px", border:"1px solid #E0E0E0", borderRadius:7, backgroundColor:"#fff", cursor:"pointer", fontSize:12, color:"#666" }}>
+                          <I.Sparkle s={12}/> Perguntar ao Charcot
+                        </button>
+                      </div>
+
+                      {/* Progress */}
+                      <div style={{ height:5, backgroundColor:"#F0F0F0", borderRadius:3, marginBottom:24 }}>
+                        <div style={{ height:"100%", width:`${((currentCard)/(mockFlashcards.length))*100}%`, backgroundColor:activeDeck.color, borderRadius:3, transition:"width 0.3s" }}/>
+                      </div>
+
+                      {/* Card */}
+                      <div onClick={()=>setCardFlipped(f=>!f)} style={{ backgroundColor:"#fff", borderRadius:16, padding:"44px 36px", border:`2px solid ${cardFlipped ? activeDeck.color+"60" : "#E8E8E8"}`, marginBottom:20, cursor:"pointer", minHeight:220, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", textAlign:"center", transition:"border 0.2s" }}>
+                        {!cardFlipped ? (
+                          <>
+                            <div style={{ fontSize:11, fontWeight:700, color:"#999", textTransform:"uppercase", letterSpacing:1, marginBottom:18 }}>Pergunta</div>
+                            <div style={{ fontSize:18, fontWeight:600, lineHeight:1.5, color:"#1a1a1a" }}>{mockFlashcards[currentCard].front}</div>
+                            <div style={{ fontSize:12, color:"#BDBDBD", marginTop:20, display:"flex", alignItems:"center", gap:5 }}><I.RotateCcw s={12}/> Clique para revelar</div>
+                          </>
+                        ) : (
+                          <>
+                            <div style={{ fontSize:11, fontWeight:700, color:activeDeck.color, textTransform:"uppercase", letterSpacing:1, marginBottom:18 }}>Resposta</div>
+                            <div style={{ fontSize:14, lineHeight:1.7, color:"#333", whiteSpace:"pre-line" }}>{mockFlashcards[currentCard].back}</div>
+                          </>
+                        )}
+                      </div>
+
+                      {cardFlipped && (
+                        <div style={{ display:"flex", gap:10 }}>
+                          <button onClick={()=>{setCurrentCard(c=>(c+1)%mockFlashcards.length);setCardFlipped(false);}} style={{ flex:1, padding:"12px 0", border:"2px solid #FECACA", borderRadius:10, backgroundColor:"#FEF2F2", cursor:"pointer", fontSize:14, fontWeight:600, color:"#EF4444", fontFamily:"inherit" }}>
+                            😕 Não lembrei
+                          </button>
+                          <button onClick={()=>{if(currentCard+1>=mockFlashcards.length){setFlashMode(null);setCardFlipped(false);}else{setCurrentCard(c=>c+1);setCardFlipped(false);}}} style={{ flex:1, padding:"12px 0", border:"2px solid #BBF7D0", borderRadius:10, backgroundColor:"#F0FDF4", cursor:"pointer", fontSize:14, fontWeight:600, color:"#16A34A", fontFamily:"inherit" }}>
+                            ✓ Lembrei!
+                          </button>
+                        </div>
+                      )}
+                      {!cardFlipped && (
+                        <button onClick={()=>setCardFlipped(true)} style={{ width:"100%", padding:"12px 0", border:"none", borderRadius:10, backgroundColor:"#F3F0FF", cursor:"pointer", fontSize:14, fontWeight:600, color:"#7C3AED", fontFamily:"inherit" }}>
+                          Revelar resposta
+                        </button>
+                      )}
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          </>
+        )}
+
+        {/* ──────── PORTAL DO PACIENTE ──────── */}
+        {page === "portal" && (
+          <>
+            {/* Header */}
+            <div style={{ padding:"20px 28px 16px", backgroundColor:"#fff", borderBottom:"1px solid #EBEBEB", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+              <div style={{ display:"flex", alignItems:"center", gap:14 }}>
+                <div style={{ width:52, height:52, borderRadius:14, backgroundColor:"#E0D4F5", display:"flex", alignItems:"center", justifyContent:"center", fontSize:16, fontWeight:700, color:"#7C3AED" }}>CS</div>
+                <div>
+                  <h1 style={{ fontSize:22, fontWeight:700, margin:0, letterSpacing:-0.5 }}>Carlos Eduardo Silva</h1>
+                  <p style={{ fontSize:13, color:"#888", margin:"4px 0 0" }}>58 anos • Masculino • Última consulta: 04/05/2025</p>
+                  <div style={{ display:"flex", gap:5, marginTop:5 }}>
+                    {["Diabetes Tipo 2","Hipertensão"].map((c,i) => (
+                      <span key={i} style={{ fontSize:11, padding:"2px 8px", borderRadius:4, backgroundColor:"#F3F0FF", color:"#7C3AED", fontWeight:500 }}>{c}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <button onClick={() => setRightPanel("portalCharcot")} style={{ display:"flex", alignItems:"center", gap:6, padding:"10px 20px", border:"none", borderRadius:10, cursor:"pointer", fontSize:14, fontWeight:600, background:"linear-gradient(135deg,#9333EA,#7C3AED)", color:"#fff" }}>
+                <I.Sparkle s={16}/> Perguntar ao Charcot
+              </button>
+            </div>
+
+            {/* Quick stats */}
+            <div style={{ padding:"10px 28px", backgroundColor:"#FAFAFA", borderBottom:"1px solid #EBEBEB", display:"flex", gap:0, alignItems:"center" }}>
+              {[
+                { label:"Documentos", value:"8", sub:"no total" },
+                { label:"Exames", value:"4", sub:"3 normais • 1 atenção" },
+                { label:"Laboratórios", value:"2", sub:"conectados" },
+                { label:"Última atualização", value:"Hoje", sub:"08:30" },
+              ].map((s, i) => (
+                <div key={i} style={{ display:"flex", alignItems:"center" }}>
+                  {i > 0 && <div style={{ width:1, height:32, backgroundColor:"#E0E0E0", margin:"0 20px" }}/>}
+                  <div>
+                    <div style={{ fontSize:17, fontWeight:700, letterSpacing:-0.5 }}>{s.value}</div>
+                    <div style={{ fontSize:11, color:"#888" }}>{s.label} · {s.sub}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Tab bar */}
+            <div style={{ padding:"0 28px", backgroundColor:"#fff", borderBottom:"1px solid #EBEBEB", display:"flex" }}>
+              {[
+                { key:"docs", label:"Meus Documentos" },
+                { key:"add", label:"Adicionar documento" },
+                { key:"labs", label:"Laboratórios" },
+              ].map(t => (
+                <button key={t.key} onClick={() => setPortalTab(t.key)} style={{
+                  padding:"13px 18px", border:"none", backgroundColor:"transparent",
+                  borderBottom: portalTab===t.key ? "2px solid #7C3AED" : "2px solid transparent",
+                  color: portalTab===t.key ? "#7C3AED" : "#666",
+                  fontWeight: portalTab===t.key ? 600 : 400,
+                  fontSize:14, cursor:"pointer", fontFamily:"inherit", transition:"all 0.15s"
+                }}>{t.label}</button>
+              ))}
+            </div>
+
+            {/* Tab content */}
+            <div style={{ flex:1, overflow:"auto", padding:"20px 28px" }}>
+
+              {/* ── Meus Documentos ── */}
+              {portalTab === "docs" && (
+                <>
+                  <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:14 }}>
+                    <div style={{ display:"flex", gap:6, flexWrap:"wrap" }}>
+                      {["Todos","Exame","Prescrição","Consulta","Atestado","Pedido"].map(f => (
+                        <button key={f} onClick={() => setPortalDocFilter(f)} style={{
+                          padding:"6px 14px", border:`1px solid ${portalDocFilter===f?"#7C3AED":"#E0E0E0"}`,
+                          borderRadius:20, backgroundColor: portalDocFilter===f ? "#F3F0FF" : "#fff",
+                          color: portalDocFilter===f ? "#7C3AED" : "#666",
+                          fontWeight: portalDocFilter===f ? 600 : 400,
+                          fontSize:13, cursor:"pointer", fontFamily:"inherit"
+                        }}>{f}</button>
+                      ))}
+                    </div>
+                    <div style={{ fontSize:13, color:"#999" }}>{portalDocs.filter(d => portalDocFilter==="Todos" || d.type===portalDocFilter).length} documentos</div>
+                  </div>
+                  <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
+                    {portalDocs.filter(d => portalDocFilter==="Todos" || d.type===portalDocFilter).map(doc => (
+                      <div key={doc.id} style={{ display:"flex", alignItems:"center", gap:14, padding:"16px 20px", backgroundColor:"#fff", borderRadius:12, border:"1px solid #E8E8E8" }}>
+                        <div style={{ width:42, height:42, borderRadius:10, flexShrink:0, backgroundColor: doc.sourceType==="lab" ? "#EFF6FF" : "#F3F0FF", color: doc.sourceType==="lab" ? "#3B82F6" : "#7C3AED", display:"flex", alignItems:"center", justifyContent:"center" }}>
+                          {doc.sourceType==="lab" ? <I.Beaker s={18}/> : <I.Doc s={18}/>}
+                        </div>
+                        <div style={{ flex:1, minWidth:0 }}>
+                          <div style={{ display:"flex", alignItems:"center", gap:7, marginBottom:4, flexWrap:"wrap" }}>
+                            <span style={{ fontWeight:600, fontSize:14 }}>{doc.name}</span>
+                            <span style={{ fontSize:10, padding:"2px 7px", borderRadius:4, fontWeight:600,
+                              backgroundColor: doc.type==="Exame"?"#EFF6FF":doc.type==="Prescrição"?"#F0FDF4":doc.type==="Atestado"?"#FFFBEB":"#F3F0FF",
+                              color: doc.type==="Exame"?"#3B82F6":doc.type==="Prescrição"?"#16A34A":doc.type==="Atestado"?"#D97706":"#7C3AED"
+                            }}>{doc.type}</span>
+                            {doc.status && (
+                              <span style={{ fontSize:10, padding:"2px 7px", borderRadius:4, fontWeight:600,
+                                backgroundColor: doc.status==="normal" ? "#F0FDF4" : "#FFFBEB",
+                                color: doc.status==="normal" ? "#16A34A" : "#D97706"
+                              }}>{doc.status==="normal" ? "✓ Normal" : "⚠ Atenção"}</span>
+                            )}
+                          </div>
+                          <div style={{ fontSize:12, color:"#999" }}>{doc.date} · {doc.source}</div>
+                        </div>
+                        <div style={{ display:"flex", alignItems:"center", gap:6 }}>
+                          <button style={{ display:"flex", alignItems:"center", gap:4, padding:"7px 12px", border:"1px solid #E0E0E0", borderRadius:8, backgroundColor:"#fff", cursor:"pointer", fontSize:12, color:"#555", fontFamily:"inherit" }}>
+                            <I.Eye /> Ver
+                          </button>
+                          <button style={{ display:"flex", alignItems:"center", gap:4, padding:"7px 12px", border:"1px solid #E0E0E0", borderRadius:8, backgroundColor:"#fff", cursor:"pointer", fontSize:12, color:"#555", fontFamily:"inherit" }}>
+                            <I.Download /> Baixar
+                          </button>
+                          <button onClick={() => { setPortalSelectedDoc(doc); setRightPanel("portalCharcot"); }} style={{ display:"flex", alignItems:"center", gap:4, padding:"7px 12px", border:"1px solid #7C3AED", borderRadius:8, backgroundColor:"#F3F0FF", cursor:"pointer", fontSize:12, color:"#7C3AED", fontWeight:600, fontFamily:"inherit" }}>
+                            <I.Sparkle s={12}/> Charcot
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {/* ── Adicionar documento ── */}
+              {portalTab === "add" && (
+                <div style={{ maxWidth:580, margin:"0 auto" }}>
+                  <div style={{ border:"2px dashed #D0D0D0", borderRadius:14, padding:"44px 24px", textAlign:"center", backgroundColor:"#FAFAFA", marginBottom:24, cursor:"pointer" }}>
+                    <div style={{ color:"#BDBDBD" }}><I.CloudUp s={42}/></div>
+                    <div style={{ fontSize:16, fontWeight:600, marginTop:14, marginBottom:6, color:"#333" }}>Arraste um arquivo aqui</div>
+                    <div style={{ fontSize:13, color:"#999", marginBottom:18 }}>PDF, JPG, PNG – até 20 MB</div>
+                    <button style={{ padding:"8px 22px", border:"1px solid #7C3AED", borderRadius:8, backgroundColor:"#fff", color:"#7C3AED", fontWeight:600, fontSize:13, cursor:"pointer" }}>
+                      Selecionar arquivo
+                    </button>
+                  </div>
+                  <div style={{ backgroundColor:"#fff", borderRadius:14, padding:24, border:"1px solid #E8E8E8" }}>
+                    <div style={{ fontSize:16, fontWeight:700, marginBottom:20 }}>Detalhes do documento</div>
+                    <div style={{ marginBottom:16 }}>
+                      <label style={{ fontSize:13, fontWeight:600, display:"block", marginBottom:6 }}>Nome do documento</label>
+                      <input placeholder="Ex: Resultado de hemograma" style={{ width:"100%", padding:"10px 14px", border:"1px solid #E0E0E0", borderRadius:8, fontSize:14, fontFamily:"inherit", outline:"none", boxSizing:"border-box" }}/>
+                    </div>
+                    <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:14, marginBottom:16 }}>
+                      <div>
+                        <label style={{ fontSize:13, fontWeight:600, display:"block", marginBottom:6 }}>Tipo</label>
+                        <select style={{ width:"100%", padding:"10px 14px", border:"1px solid #E0E0E0", borderRadius:8, fontSize:14, fontFamily:"inherit", cursor:"pointer" }}>
+                          <option>Exame</option><option>Prescrição</option><option>Atestado</option><option>Pedido</option><option>Consulta</option><option>Outro</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label style={{ fontSize:13, fontWeight:600, display:"block", marginBottom:6 }}>Data do documento</label>
+                        <input type="date" style={{ width:"100%", padding:"10px 14px", border:"1px solid #E0E0E0", borderRadius:8, fontSize:14, fontFamily:"inherit", cursor:"pointer" }}/>
+                      </div>
+                    </div>
+                    <div style={{ marginBottom:24 }}>
+                      <label style={{ fontSize:13, fontWeight:600, display:"block", marginBottom:6 }}>Observações (opcional)</label>
+                      <textarea placeholder="Contexto adicional sobre este documento..." style={{ width:"100%", minHeight:90, padding:"10px 14px", border:"1px solid #E0E0E0", borderRadius:8, fontSize:13, fontFamily:"inherit", resize:"vertical", outline:"none", lineHeight:1.5, boxSizing:"border-box" }}/>
+                    </div>
+                    <button style={{ width:"100%", padding:12, border:"none", borderRadius:10, background:"linear-gradient(135deg,#9333EA,#7C3AED)", color:"#fff", fontWeight:600, fontSize:15, cursor:"pointer", fontFamily:"inherit", display:"flex", alignItems:"center", justifyContent:"center", gap:8 }}>
+                      <I.Plus /> Adicionar documento
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* ── Laboratórios ── */}
+              {portalTab === "labs" && (
+                <>
+                  <div style={{ marginBottom:20 }}>
+                    <div style={{ fontSize:16, fontWeight:700, marginBottom:4 }}>Laboratórios</div>
+                    <div style={{ fontSize:13, color:"#888" }}>Conecte seus laboratórios para importar resultados automaticamente.</div>
+                  </div>
+                  <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:14 }}>
+                    {portalLabs.map(lab => (
+                      <div key={lab.id} style={{ backgroundColor:"#fff", borderRadius:14, padding:"20px", border: lab.connected ? "1px solid #E8E8E8" : "1px dashed #D0D0D0" }}>
+                        <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:16 }}>
+                          <div style={{ width:46, height:46, borderRadius:12, backgroundColor:lab.color+"18", color:lab.color, display:"flex", alignItems:"center", justifyContent:"center", fontSize:13, fontWeight:700 }}>{lab.abbr}</div>
+                          <div>
+                            <div style={{ fontWeight:600, fontSize:15 }}>{lab.name}</div>
+                            {lab.connected
+                              ? <div style={{ fontSize:12, color:"#16A34A", display:"flex", alignItems:"center", gap:4, marginTop:2 }}><div style={{ width:6, height:6, borderRadius:"50%", backgroundColor:"#22C55E" }}/> Conectado</div>
+                              : <div style={{ fontSize:12, color:"#999", marginTop:2 }}>Não conectado</div>
+                            }
+                          </div>
+                        </div>
+                        {lab.connected && (
+                          <div style={{ display:"flex", gap:10, marginBottom:14, padding:"10px 14px", backgroundColor:"#F9FAFB", borderRadius:8, border:"1px solid #EBEBEB" }}>
+                            <div style={{ textAlign:"center" }}>
+                              <div style={{ fontSize:18, fontWeight:700 }}>{lab.results}</div>
+                              <div style={{ fontSize:11, color:"#888" }}>exames</div>
+                            </div>
+                            <div style={{ width:1, backgroundColor:"#E8E8E8", margin:"0 4px" }}/>
+                            <div style={{ display:"flex", alignItems:"center", paddingLeft:6 }}>
+                              <div style={{ fontSize:12, color:"#888" }}>Sincronizado: {lab.lastSync}</div>
+                            </div>
+                          </div>
+                        )}
+                        <div style={{ display:"flex", gap:8 }}>
+                          {lab.connected ? (
+                            <>
+                              <button style={{ flex:1, padding:"8px 0", border:"1px solid #E0E0E0", borderRadius:8, backgroundColor:"#fff", cursor:"pointer", fontSize:13, fontWeight:500, color:"#555", fontFamily:"inherit", display:"flex", alignItems:"center", justifyContent:"center", gap:6 }}>
+                                <I.Refresh /> Sincronizar
+                              </button>
+                              <button style={{ padding:"8px 14px", border:"1px solid #FECACA", borderRadius:8, backgroundColor:"#fff", cursor:"pointer", fontSize:13, color:"#EF4444", fontFamily:"inherit" }}>
+                                Desconectar
+                              </button>
+                            </>
+                          ) : (
+                            <button style={{ flex:1, padding:"8px 0", border:"none", borderRadius:8, background:"linear-gradient(135deg,#9333EA,#7C3AED)", color:"#fff", cursor:"pointer", fontSize:13, fontWeight:600, fontFamily:"inherit", display:"flex", alignItems:"center", justifyContent:"center", gap:6 }}>
+                              <I.LinkIcon s={14}/> Conectar
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          </>
+        )}
       </div>
 
       {/* ═══ RIGHT PANELS ═══ */}
@@ -678,6 +1476,110 @@ export default function VOAApp() {
               <ChatInput placeholder="Faça perguntas sobre este relatório..." />
             </div>
           )}
+        </div>
+      )}
+
+      {/* Trilha Charcot */}
+      {rightPanel === "trilhaCharcot" && (
+        <div style={{ width:400, minWidth:400, borderLeft:"1px solid #EBEBEB", backgroundColor:"#fff", display:"flex", flexDirection:"column", overflow:"hidden" }}>
+          <div style={{ padding:"12px 16px", borderBottom:"1px solid #EBEBEB", display:"flex", alignItems:"center", gap:8 }}>
+            <button onClick={()=>setRightPanel(null)} style={{ background:"none", border:"none", cursor:"pointer", color:"#666", display:"flex" }}><I.Close /></button>
+            <div style={{ flex:1, fontSize:15, fontWeight:700 }}>Charcot – Trilha de Aprendizado</div>
+            <button style={{ background:"none", border:"none", cursor:"pointer", color:"#666", display:"flex" }}><I.Refresh /></button>
+          </div>
+
+          <div style={{ padding:"8px 16px", backgroundColor:"#F9F7FF", display:"flex", alignItems:"center", gap:6, fontSize:12, color:"#7C3AED", borderBottom:"1px solid #EDE9FE" }}>
+            <I.BookOpen s={13}/> Contexto: sua prática clínica real
+          </div>
+
+          <div style={{ flex:1, overflow:"auto", padding:"20px 16px" }}>
+            <div style={{ textAlign:"center", marginBottom:24, padding:"0 10px" }}>
+              <div style={{ width:48, height:48, borderRadius:"50%", backgroundColor:"#F3F0FF", display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 12px", color:"#7C3AED" }}><I.Sparkle s={24}/></div>
+              <div style={{ fontSize:16, fontWeight:700, marginBottom:6 }}>O que quer aprender hoje?</div>
+              <div style={{ fontSize:13, color:"#888", lineHeight:1.5 }}>Crie quizzes e flashcards personalizados ou tire dúvidas sobre suas condutas e diretrizes.</div>
+            </div>
+
+            <div style={{ fontSize:12, fontWeight:600, color:"#999", textTransform:"uppercase", letterSpacing:0.5, marginBottom:8 }}>Criar conteúdo</div>
+            {[
+              "Crie um quiz sobre diabetes com base nos meus casos",
+              "Gere flashcards de hipertensão conforme ESC 2024",
+              "Monte um quiz de DPOC com as diretrizes GOLD 2025",
+              "Crie flashcards sobre neuropatia diabética",
+            ].map((s,i) => (
+              <button key={i} style={{ width:"100%", display:"flex", alignItems:"center", gap:8, padding:"10px 14px", border:"1px solid #E8E8E8", borderRadius:10, backgroundColor:"#FAFAFA", cursor:"pointer", fontSize:13, color:"#555", textAlign:"left", fontFamily:"inherit", marginBottom:8 }}>
+                <I.Sparkle s={14}/> {s}
+              </button>
+            ))}
+
+            <div style={{ fontSize:12, fontWeight:600, color:"#999", textTransform:"uppercase", letterSpacing:0.5, marginBottom:8, marginTop:16 }}>Analisar minha prática</div>
+            {[
+              "Por que meu rastreio de neuropatia está baixo?",
+              "Quais diretrizes novas impactam minha prática?",
+              "Analise minhas condutas dos últimos 3 meses",
+              "Crie um plano de estudo semanal para mim",
+            ].map((s,i) => (
+              <button key={i} style={{ width:"100%", display:"flex", alignItems:"center", gap:8, padding:"10px 14px", border:"1px solid #E8E8E8", borderRadius:10, backgroundColor:"#FAFAFA", cursor:"pointer", fontSize:13, color:"#555", textAlign:"left", fontFamily:"inherit", marginBottom:8 }}>
+                <I.Target s={14}/> {s}
+              </button>
+            ))}
+          </div>
+          <ChatInput placeholder="Peça um quiz, flashcard ou análise..." />
+        </div>
+      )}
+
+      {/* Portal Charcot */}
+      {rightPanel === "portalCharcot" && (
+        <div style={{ width:400, minWidth:400, borderLeft:"1px solid #EBEBEB", backgroundColor:"#fff", display:"flex", flexDirection:"column", overflow:"hidden" }}>
+          <div style={{ padding:"12px 16px", borderBottom:"1px solid #EBEBEB", display:"flex", alignItems:"center", gap:8 }}>
+            <button onClick={() => { setRightPanel(null); setPortalSelectedDoc(null); }} style={{ background:"none", border:"none", cursor:"pointer", color:"#666", display:"flex" }}><I.Close /></button>
+            <div style={{ flex:1, fontSize:15, fontWeight:700 }}>Charcot</div>
+            <button style={{ background:"none", border:"none", cursor:"pointer", color:"#666", display:"flex" }}><I.Refresh /></button>
+          </div>
+
+          {portalSelectedDoc ? (
+            <div style={{ padding:"10px 16px", backgroundColor:"#F3F0FF", display:"flex", alignItems:"center", gap:8, borderBottom:"1px solid #E8E0F5" }}>
+              <div style={{ color:"#7C3AED" }}><I.Doc s={16}/></div>
+              <div style={{ flex:1, minWidth:0 }}>
+                <div style={{ fontSize:12, fontWeight:600, color:"#7C3AED", overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap" }}>{portalSelectedDoc.name}</div>
+                <div style={{ fontSize:11, color:"#888" }}>{portalSelectedDoc.date} · {portalSelectedDoc.source}</div>
+              </div>
+              <button onClick={() => setPortalSelectedDoc(null)} style={{ background:"none", border:"none", cursor:"pointer", color:"#999", fontSize:18, lineHeight:1 }}>×</button>
+            </div>
+          ) : (
+            <div style={{ padding:"8px 16px", backgroundColor:"#F0FDF4", display:"flex", alignItems:"center", gap:6, fontSize:12, color:"#16A34A", borderBottom:"1px solid #DCFCE7" }}>
+              <div style={{ width:8, height:8, borderRadius:"50%", backgroundColor:"#22C55E" }}/> Perguntas sobre sua saúde geral
+            </div>
+          )}
+
+          <div style={{ flex:1, overflow:"auto", padding:"20px 16px" }}>
+            <div style={{ textAlign:"center", marginBottom:24, padding:"0 16px" }}>
+              <div style={{ width:48, height:48, borderRadius:"50%", backgroundColor:"#F3F0FF", display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 12px", color:"#7C3AED" }}><I.Sparkle s={24}/></div>
+              <div style={{ fontSize:16, fontWeight:700, marginBottom:6 }}>
+                {portalSelectedDoc ? "Pergunte sobre este documento" : "Como posso te ajudar?"}
+              </div>
+              <div style={{ fontSize:13, color:"#888", lineHeight:1.5 }}>
+                {portalSelectedDoc
+                  ? "Tire dúvidas sobre este resultado em linguagem simples."
+                  : "Tire dúvidas sobre seus exames, medicações e saúde geral."}
+              </div>
+            </div>
+            {(portalSelectedDoc ? [
+              "O que significa este resultado?",
+              "Este valor está normal para minha idade?",
+              "O que devo fazer com este resultado?",
+              "Isso está relacionado ao meu diabetes?",
+            ] : [
+              "Como estão meus últimos exames?",
+              "Minhas medicações têm interações?",
+              "Meu HbA1c está evoluindo bem?",
+              "Quando devo marcar minha próxima consulta?",
+            ]).map((s, i) => (
+              <button key={i} style={{ width:"100%", display:"flex", alignItems:"center", gap:8, padding:"10px 14px", border:"1px solid #E8E8E8", borderRadius:10, backgroundColor:"#FAFAFA", cursor:"pointer", fontSize:13, color:"#555", textAlign:"left", fontFamily:"inherit", marginBottom:8 }}>
+                <I.Sparkle s={14}/> {s}
+              </button>
+            ))}
+          </div>
+          <ChatInput placeholder={portalSelectedDoc ? "Pergunte sobre este documento..." : "Pergunte sobre sua saúde..."} />
         </div>
       )}
 
