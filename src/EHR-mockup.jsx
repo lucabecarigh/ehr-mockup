@@ -59,6 +59,11 @@ const I = {
   Star: ({ s = 20 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>,
   Lock: ({ s = 16 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>,
   CheckCircle: ({ s = 16 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>,
+  Briefcase: ({ s = 20 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>,
+  DollarSign: ({ s = 18 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" x2="12" y1="2" y2="22" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>,
+  BarChart3: ({ s = 18 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18" /><path d="M13 17V9" /><path d="M18 17V5" /><path d="M8 17v-3" /></svg>,
+  Percent: ({ s = 16 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" x2="5" y1="5" y2="19" /><circle cx="6.5" cy="6.5" r="2.5" /><circle cx="17.5" cy="17.5" r="2.5" /></svg>,
+  Smile: ({ s = 18 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><line x1="9" x2="9.01" y1="9" y2="9" /><line x1="15" x2="15.01" y1="9" y2="9" /></svg>,
 };
 
 const AudioWave = () => (
@@ -114,7 +119,7 @@ const mockReport = {
   recs: ["Agendar retorno urgente para os 5 pacientes com HbA1c > 9%", "Implementar rastreio de neuropatia diabética nos 28 pacientes com DM2", "Considerar inclusão de ISGLT2 nos 8 pacientes com DM2 + HAS + IMC > 30", "Solicitar fundo de olho para os 15 pacientes sem avaliação oftalmológica no último ano"],
 };
 
-/* ── Trilha de Aprendizado ── */
+/* ── Trilha do Médico ── */
 const trilhaConditions = [
   { name: "Diabetes Tipo 2", count: 28, pct: 28, color: "#1A8A8A" },
   { name: "Hipertensão", count: 22, pct: 22, color: "#2BA89E" },
@@ -305,6 +310,104 @@ const patientBriefs = {
   },
 };
 
+/* ── Dados do Gestor (UBS/ESF) ── */
+const gestorIndicadoresPrevine = [
+  { id: 1, label: "Pré-natal (6+ consultas)", meta: 60, real: 72, icon: "🤰" },
+  { id: 2, label: "Citopatológico (mulheres 25-64a)", meta: 40, real: 35, icon: "🩺" },
+  { id: 3, label: "Vacinação infantil em dia", meta: 95, real: 88, icon: "💉" },
+  { id: 4, label: "Hipertensão — PA controlada", meta: 50, real: 62, icon: "❤️" },
+  { id: 5, label: "Diabetes — HbA1c < 7%", meta: 50, real: 45, icon: "🩸" },
+  { id: 6, label: "Saúde bucal (1ª consulta)", meta: 30, real: 38, icon: "🦷" },
+  { id: 7, label: "Cadastro e-SUS atualizado", meta: 80, real: 91, icon: "📋" },
+];
+const gestorAtendimentosChart = [
+  { month: "Set", agendada: 320, espontanea: 180, visita: 95 },
+  { month: "Out", agendada: 345, espontanea: 195, visita: 102 },
+  { month: "Nov", agendada: 380, espontanea: 210, visita: 110 },
+  { month: "Dez", agendada: 290, espontanea: 240, visita: 85 },
+  { month: "Jan", agendada: 410, espontanea: 225, visita: 118 },
+  { month: "Fev", agendada: 395, espontanea: 205, visita: 125 },
+  { month: "Mar", agendada: 420, espontanea: 230, visita: 130 },
+];
+const gestorICSAB = [
+  { condicao: "Hipertensão", internacoes: 18, prev: 24, color: "#EF4444" },
+  { condicao: "Diabetes", internacoes: 12, prev: 16, color: "#F59E0B" },
+  { condicao: "Asma/DPOC", internacoes: 8, prev: 11, color: "#3B82F6" },
+  { condicao: "Pneumonia", internacoes: 6, prev: 9, color: "#8B5CF6" },
+  { condicao: "Gastroenterite", internacoes: 4, prev: 5, color: "#22C55E" },
+  { condicao: "Infecção urinária", internacoes: 3, prev: 4, color: "#EC4899" },
+];
+const gestorVacinacao = [
+  { vacina: "BCG", cobertura: 97, meta: 95 },
+  { vacina: "Penta", cobertura: 89, meta: 95 },
+  { vacina: "VIP/VOP", cobertura: 91, meta: 95 },
+  { vacina: "Tríplice Viral", cobertura: 85, meta: 95 },
+  { vacina: "Pneumo 10", cobertura: 92, meta: 95 },
+  { vacina: "Influenza (idosos)", cobertura: 78, meta: 90 },
+];
+const gestorEquipesESF = [
+  { id: 1, nome: "ESF Jardim Esperança", area: "Microárea 1-6", medico: "Dr. Luca Becari", enfermeiro: "Enf. Carla Souza", acs: 6, populacao: 3200, cobertura: 94, consultas: 342, status: "Completa", statusColor: "#22C55E" },
+  { id: 2, nome: "ESF Vila Nova", area: "Microárea 7-12", medico: "Dra. Priscila Lima", enfermeiro: "Enf. Roberto Dias", acs: 5, populacao: 2800, cobertura: 88, consultas: 298, status: "Completa", statusColor: "#22C55E" },
+  { id: 3, nome: "ESF Centro", area: "Microárea 13-17", medico: "Dr. Marcos Alves", enfermeiro: "Enf. Juliana Costa", acs: 4, populacao: 3500, cobertura: 76, consultas: 315, status: "Incompleta", statusColor: "#F59E0B" },
+  { id: 4, nome: "ESF Boa Vista", area: "Microárea 18-23", medico: "Dra. Fernanda Reis", enfermeiro: "Enf. Paulo Mendes", acs: 6, populacao: 3347, cobertura: 97, consultas: 329, status: "Completa", statusColor: "#22C55E" },
+];
+const gestorAgendaUBS = [
+  { hora: "07:00", paciente: "Maria da Conceição Silva", profissional: "Dr. Luca Becari", tipo: "Pré-natal", status: "Confirmado", statusColor: "#22C55E", statusBg: "#F0FDF4" },
+  { hora: "07:30", paciente: "José Antônio Ferreira", profissional: "Enf. Carla Souza", tipo: "Hiperdia", status: "Confirmado", statusColor: "#22C55E", statusBg: "#F0FDF4" },
+  { hora: "08:00", paciente: "Ana Paula Oliveira", profissional: "Dr. Luca Becari", tipo: "Puericultura", status: "Aguardando", statusColor: "#F59E0B", statusBg: "#FFFBEB" },
+  { hora: "08:30", paciente: "Francisco das Chagas", profissional: "Enf. Carla Souza", tipo: "Curativo", status: "Em atendimento", statusColor: "#3B82F6", statusBg: "#EFF6FF" },
+  { hora: "09:00", paciente: "Demanda espontânea", profissional: "Dr. Luca Becari", tipo: "Acolhimento", status: "Reservado", statusColor: "#8B5CF6", statusBg: "#F5F3FF" },
+  { hora: "09:30", paciente: "Rosa Maria Santos", profissional: "Dr. Luca Becari", tipo: "Saúde Mental", status: "Confirmado", statusColor: "#22C55E", statusBg: "#F0FDF4" },
+  { hora: "10:00", paciente: "Visita domiciliar — Micro 3", profissional: "ACS Luciana", tipo: "VD Acamado", status: "Agendado", statusColor: "#1A8A8A", statusBg: "#E8F7F2" },
+  { hora: "14:00", paciente: "Grupo Hiperdia", profissional: "Equipe ESF", tipo: "Atividade coletiva", status: "Confirmado", statusColor: "#22C55E", statusBg: "#F0FDF4" },
+];
+const gestorRepasse = [
+  { month: "Set", pab: 45200, previne: 28400 }, { month: "Out", pab: 45200, previne: 31200 },
+  { month: "Nov", pab: 45200, previne: 33800 }, { month: "Dez", pab: 45200, previne: 30100 },
+  { month: "Jan", pab: 48500, previne: 35600 }, { month: "Fev", pab: 48500, previne: 37200 },
+  { month: "Mar", pab: 48500, previne: 38900 },
+];
+
+/* ── Dados Medicina Ocupacional ── */
+const ocupEmpresas = [
+  { id: 1, name: "TechBrasil Ltda", cnpj: "12.345.678/0001-90", ramo: "Tecnologia", funcionarios: 85, risco: 1, pcmsoVigencia: "12/2026", status: "Em dia", statusColor: "#22C55E", avatar: "TB" },
+  { id: 2, name: "Construmax Engenharia", cnpj: "23.456.789/0001-01", ramo: "Construção Civil", funcionarios: 142, risco: 3, pcmsoVigencia: "06/2026", status: "Em dia", statusColor: "#22C55E", avatar: "CE" },
+  { id: 3, name: "Indústria Química Apex", cnpj: "34.567.890/0001-12", ramo: "Indústria Química", funcionarios: 67, risco: 4, pcmsoVigencia: "03/2026", status: "Vencendo", statusColor: "#F59E0B", avatar: "QA" },
+  { id: 4, name: "Logística Rápida S.A.", cnpj: "45.678.901/0001-23", ramo: "Transporte/Logística", funcionarios: 210, risco: 2, pcmsoVigencia: "09/2026", status: "Em dia", statusColor: "#22C55E", avatar: "LR" },
+  { id: 5, name: "Alimentos BomSabor", cnpj: "56.789.012/0001-34", ramo: "Indústria Alimentícia", funcionarios: 95, risco: 2, pcmsoVigencia: "01/2026", status: "Vencido", statusColor: "#EF4444", avatar: "AB" },
+];
+const ocupFuncionarios = [
+  { id: 1, empresaId: 2, empresa: "Construmax Engenharia", name: "Marcos Vinícius Souza", cargo: "Pedreiro", setor: "Obra Externa", riscos: ["Ruído", "Ergonômico", "Queda"], ultimoASO: "15/09/2025", proximoASO: "15/03/2026", status: "Próximo", statusColor: "#F59E0B", statusBg: "#FFFBEB", avatar: "MS" },
+  { id: 2, empresaId: 1, empresa: "TechBrasil Ltda", name: "Juliana Almeida Costa", cargo: "Desenvolvedora", setor: "TI", riscos: ["Ergonômico"], ultimoASO: "20/01/2026", proximoASO: "20/01/2027", status: "Em dia", statusColor: "#22C55E", statusBg: "#F0FDF4", avatar: "JC" },
+  { id: 3, empresaId: 3, empresa: "Indústria Química Apex", name: "Ricardo Santos Lima", cargo: "Operador de Produção", setor: "Linha de Produção", riscos: ["Químico", "Ruído", "Biológico"], ultimoASO: "10/06/2025", proximoASO: "10/12/2025", status: "Vencido", statusColor: "#EF4444", statusBg: "#FEF2F2", avatar: "RL" },
+  { id: 4, empresaId: 4, empresa: "Logística Rápida S.A.", name: "Carlos Alberto Mendes", cargo: "Motorista", setor: "Frota", riscos: ["Ergonômico", "Acidente"], ultimoASO: "05/11/2025", proximoASO: "05/05/2026", status: "Em dia", statusColor: "#22C55E", statusBg: "#F0FDF4", avatar: "CM" },
+  { id: 5, empresaId: 2, empresa: "Construmax Engenharia", name: "Anderson Pereira Silva", cargo: "Eletricista", setor: "Manutenção", riscos: ["Elétrico", "Queda", "Ruído"], ultimoASO: "28/08/2025", proximoASO: "28/02/2026", status: "Vencido", statusColor: "#EF4444", statusBg: "#FEF2F2", avatar: "AS" },
+  { id: 6, empresaId: 5, empresa: "Alimentos BomSabor", name: "Patrícia Oliveira Ramos", cargo: "Auxiliar de Produção", setor: "Embalagem", riscos: ["Ergonômico", "Biológico"], ultimoASO: "12/12/2025", proximoASO: "12/06/2026", status: "Em dia", statusColor: "#22C55E", statusBg: "#F0FDF4", avatar: "PR" },
+  { id: 7, empresaId: 3, empresa: "Indústria Química Apex", name: "Fernando Gomes Ribeiro", cargo: "Técnico de Segurança", setor: "SESMT", riscos: ["Químico", "Ruído"], ultimoASO: "01/02/2026", proximoASO: "01/08/2026", status: "Em dia", statusColor: "#22C55E", statusBg: "#F0FDF4", avatar: "FR" },
+  { id: 8, empresaId: 4, empresa: "Logística Rápida S.A.", name: "Luciana Ferreira Dias", cargo: "Conferente", setor: "Armazém", riscos: ["Ergonômico", "Acidente"], ultimoASO: "18/10/2025", proximoASO: "18/04/2026", status: "Próximo", statusColor: "#F59E0B", statusBg: "#FFFBEB", avatar: "LD" },
+];
+const ocupExamesTipos = ["Admissional", "Periódico", "Retorno ao trabalho", "Mudança de função", "Demissional"];
+const ocupAgendaHoje = [
+  { hora: "08:00", funcionario: "Marcos Vinícius Souza", empresa: "Construmax Engenharia", tipo: "Periódico", status: "Aguardando", statusColor: "#F59E0B", statusBg: "#FFFBEB" },
+  { hora: "08:45", funcionario: "Anderson Pereira Silva", empresa: "Construmax Engenharia", tipo: "Periódico", status: "Em atendimento", statusColor: "#3B82F6", statusBg: "#EFF6FF" },
+  { hora: "09:30", funcionario: "Novo colaborador", empresa: "TechBrasil Ltda", tipo: "Admissional", status: "Confirmado", statusColor: "#22C55E", statusBg: "#F0FDF4" },
+  { hora: "10:15", funcionario: "Ricardo Santos Lima", empresa: "Ind. Química Apex", tipo: "Periódico", status: "Confirmado", statusColor: "#22C55E", statusBg: "#F0FDF4" },
+  { hora: "11:00", funcionario: "Maria José Santos", empresa: "Alimentos BomSabor", tipo: "Retorno ao trabalho", status: "Confirmado", statusColor: "#22C55E", statusBg: "#F0FDF4" },
+  { hora: "14:00", funcionario: "Pedro Henrique Alves", empresa: "Logística Rápida S.A.", tipo: "Demissional", status: "Não confirmado", statusColor: "#EF4444", statusBg: "#FEF2F2" },
+];
+const ocupExamesChart = [
+  { month: "Set", v: 38 }, { month: "Out", v: 45 }, { month: "Nov", v: 52 },
+  { month: "Dez", v: 28 }, { month: "Jan", v: 61 }, { month: "Fev", v: 55 },
+  { month: "Mar", v: 48 },
+];
+const ocupRiscoChart = [
+  { name: "Ergonômico", value: 35, color: "#1A8A8A" },
+  { name: "Ruído", value: 25, color: "#2BA89E" },
+  { name: "Químico", value: 18, color: "#F59E0B" },
+  { name: "Acidente", value: 14, color: "#EF4444" },
+  { name: "Biológico", value: 8, color: "#3B82F6" },
+];
+
 /* ═══════════════════════════════════════════
    REUSABLE COMPONENTS
    ═══════════════════════════════════════════ */
@@ -390,7 +493,7 @@ export default function MedComVcApp() {
   const [portalDocFilter, setPortalDocFilter] = useState("Todos");
   const [portalSelectedDoc, setPortalSelectedDoc] = useState(null);
 
-  // Trilha de Aprendizado
+  // Trilha do Médico
   const [trilhaTab, setTrilhaTab] = useState("overview"); // overview | quiz | flashcards
   const [quizMode, setQuizMode] = useState(null); // null | "active" | "done"
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -461,6 +564,20 @@ export default function MedComVcApp() {
     return r.sort((a, b) => patSort === "name" ? a.name.localeCompare(b.name) : patSort === "consultations" ? b.consultations - a.consultations : 0);
   }, [patSearch, patFilter, patSort]);
 
+  // Medicina Ocupacional
+  const [ocupTab, setOcupTab] = useState("dashboard"); // dashboard | empresas | funcionarios | aso
+  const [ocupEmpresaFilter, setOcupEmpresaFilter] = useState("");
+  const [ocupSearch, setOcupSearch] = useState("");
+  const [ocupAsoTipo, setOcupAsoTipo] = useState("");
+  const [ocupAsoResult, setOcupAsoResult] = useState("");
+
+  const filteredOcupFunc = useMemo(() => {
+    let r = ocupFuncionarios;
+    if (ocupSearch) { const s = ocupSearch.toLowerCase(); r = r.filter(f => f.name.toLowerCase().includes(s) || f.cargo.toLowerCase().includes(s)); }
+    if (ocupEmpresaFilter) r = r.filter(f => f.empresaId === Number(ocupEmpresaFilter));
+    return r;
+  }, [ocupSearch, ocupEmpresaFilter]);
+
   const togglePat = (id) => setSelectedPats(p => p.includes(id) ? p.filter(x => x !== id) : [...p, id]);
   const showSidebar = rightPanel === null;
 
@@ -481,6 +598,8 @@ export default function MedComVcApp() {
         <NavIcon active={page === "patients"} onClick={() => { setPage("patients"); setRightPanel(null); }} icon={<I.Users />} />
         <NavIcon active={page === "consulta"} onClick={() => { setPage("consulta"); setRightPanel(null); setConsultaMode("new"); }} icon={<I.Clipboard />} />
         <NavIcon active={page === "clinbot"} onClick={() => { setPage("clinbot"); setRightPanel(null); }} icon={<I.Chat />} />
+        <NavIcon active={page === "gestor"} onClick={() => { setPage("gestor"); setRightPanel(null); }} icon={<I.Briefcase />} />
+        <NavIcon active={page === "ocupacional"} onClick={() => { setPage("ocupacional"); setRightPanel(null); setOcupTab("dashboard"); }} icon={<I.CheckSquare />} />
         <div style={{ width: 24, height: 1, backgroundColor: "#EBEBEB", margin: "6px 0" }} />
         <NavIcon active={page === "portal"} onClick={() => { setPage("portal"); setRightPanel(null); setPortalTab("docs"); }} icon={<I.Person />} badge={false} />
         <NavIcon active={page === "trilha"} onClick={() => { setPage("trilha"); setRightPanel(null); setTrilhaTab("overview"); setQuizMode(null); setFlashMode(null); }} icon={<I.BookOpen />} />
@@ -507,11 +626,13 @@ export default function MedComVcApp() {
               { key: "patients", label: "Meus Pacientes", icon: <I.Users s={16} /> },
               { key: "consulta", label: "Nova Consulta", icon: <I.Clipboard s={16} /> },
               { key: "clinbot", label: "ClinBot IA", icon: <I.Chat s={16} /> },
+              { key: "gestor", label: "Gestão", icon: <I.Briefcase s={16} /> },
+              { key: "ocupacional", label: "Med. Ocupacional", icon: <I.CheckSquare s={16} /> },
             ].map(n => (
               <div key={n.key} onClick={() => { setPage(n.key); if (n.key === "consulta") setConsultaMode("new"); }} style={{
                 display: "flex", alignItems: "center", gap: 8, padding: "10px 12px", borderRadius: 10, cursor: "pointer", marginBottom: 2,
-                backgroundColor: page === n.key ? "#E8F7F2" : "transparent",
-                color: page === n.key ? "#1A8A8A" : "#555", fontWeight: page === n.key ? 600 : 500, fontSize: 14, transition: "all 0.15s"
+                backgroundColor: page === n.key ? (n.key === "ocupacional" ? "#FFF7ED" : "#E8F7F2") : "transparent",
+                color: page === n.key ? (n.key === "ocupacional" ? "#C2410C" : "#1A8A8A") : "#555", fontWeight: page === n.key ? 600 : 500, fontSize: 14, transition: "all 0.15s"
               }}>{n.icon} {n.label}</div>
             ))}
             <div style={{ height: 1, backgroundColor: "#EBEBEB", margin: "6px 2px" }} />
@@ -525,7 +646,7 @@ export default function MedComVcApp() {
               display: "flex", alignItems: "center", gap: 8, padding: "10px 12px", borderRadius: 10, cursor: "pointer", marginBottom: 2,
               backgroundColor: page === "trilha" ? "#E8F7F2" : "transparent",
               color: page === "trilha" ? "#1A8A8A" : "#555", fontWeight: page === "trilha" ? 600 : 500, fontSize: 14, transition: "all 0.15s"
-            }}><I.BookOpen s={16} /> Trilha de Aprendizado</div>
+            }}><I.BookOpen s={16} /> Trilha do Médico</div>
             <div onClick={() => { setPage("patTrilha"); setPatTrilhaTab("aprender"); setPatQuizMode(null); }} style={{
               display: "flex", alignItems: "center", gap: 8, padding: "10px 12px", borderRadius: 10, cursor: "pointer", marginBottom: 2,
               backgroundColor: page === "patTrilha" ? "#FFFBEB" : "transparent",
@@ -650,6 +771,84 @@ export default function MedComVcApp() {
                       <div style={{ fontSize: 12, fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{d.name}</div>
                       <div style={{ fontSize: 10, color: "#999" }}>{d.date}</div>
                     </div>
+                  </div>
+                ))}
+              </>
+            )}
+            {page === "gestor" && (
+              <>
+                <div style={{ padding: "12px 10px", borderRadius: 10, background: "linear-gradient(135deg,#E8F7F222,#D1FAE533)", border: "1px solid #BBF7D0", marginBottom: 10 }}>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: "#1A8A8A", marginBottom: 6 }}>📊 Previne Brasil</div>
+                  <div style={{ display: "flex", gap: 6 }}>
+                    <div style={{ flex: 1, textAlign: "center", padding: "6px 4px", backgroundColor: "#F0FDF4", borderRadius: 6 }}>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: "#22C55E" }}>5</div>
+                      <div style={{ fontSize: 9, color: "#888" }}>Atingidas</div>
+                    </div>
+                    <div style={{ flex: 1, textAlign: "center", padding: "6px 4px", backgroundColor: "#FEF2F2", borderRadius: 6 }}>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: "#EF4444" }}>2</div>
+                      <div style={{ fontSize: 9, color: "#888" }}>Abaixo</div>
+                    </div>
+                    <div style={{ flex: 1, textAlign: "center", padding: "6px 4px", backgroundColor: "#EFF6FF", borderRadius: 6 }}>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: "#3B82F6" }}>89%</div>
+                      <div style={{ fontSize: 9, color: "#888" }}>Cobertura</div>
+                    </div>
+                  </div>
+                </div>
+                <div style={{ fontSize: 11, fontWeight: 600, color: "#999", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8 }}>Alertas Saúde Pública</div>
+                {[{ t: "Campanha Influenza — cobertura 78% (meta 90%)", s: "high" }, { t: "3 gestantes com pré-natal incompleto", s: "high" }, { t: "ICSAB Hipertensão: 18 internações (↓25%)", s: "medium" }, { t: "ESF Centro — equipe incompleta (falta ACS)", s: "medium" }, { t: "Tríplice Viral abaixo da meta (85%)", s: "high" }].map((a, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "9px", borderRadius: 8, marginBottom: 4, backgroundColor: a.s === "high" ? "#FEF2F2" : "#FFFBEB" }}>
+                    <div style={{ color: a.s === "high" ? "#EF4444" : "#F59E0B", marginTop: 1 }}><I.Alert s={14} /></div>
+                    <span style={{ fontSize: 12, color: "#555", lineHeight: 1.4 }}>{a.t}</span>
+                  </div>
+                ))}
+                <div style={{ fontSize: 11, fontWeight: 600, color: "#999", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8, marginTop: 14 }}>Equipes ESF</div>
+                {gestorEquipesESF.map(e => (
+                  <div key={e.id} style={{ display: "flex", alignItems: "center", gap: 8, padding: "7px 8px", borderRadius: 8, cursor: "pointer", marginBottom: 2 }}>
+                    <div style={{ width: 26, height: 26, borderRadius: 7, flexShrink: 0, backgroundColor: "#E5F4EE", color: "#1A8A8A", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 8, fontWeight: 700 }}>{e.nome.split(" ").pop().slice(0, 2).toUpperCase()}</div>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontSize: 12, fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.nome}</div>
+                      <div style={{ fontSize: 10, color: "#999" }}>{e.populacao.toLocaleString("pt-BR")} hab • {e.cobertura}%</div>
+                    </div>
+                    <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: e.statusColor, flexShrink: 0 }} />
+                  </div>
+                ))}
+              </>
+            )}
+            {page === "ocupacional" && (
+              <>
+                <div style={{ padding: "12px 10px", borderRadius: 10, background: "linear-gradient(135deg,#FFF7ED22,#FED7AA33)", border: "1px solid #FED7AA", marginBottom: 10 }}>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: "#C2410C", marginBottom: 6 }}>📋 Conformidade PCMSO</div>
+                  <div style={{ display: "flex", gap: 6 }}>
+                    <div style={{ flex: 1, textAlign: "center", padding: "6px 4px", backgroundColor: "#F0FDF4", borderRadius: 6 }}>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: "#22C55E" }}>3</div>
+                      <div style={{ fontSize: 9, color: "#888" }}>Em dia</div>
+                    </div>
+                    <div style={{ flex: 1, textAlign: "center", padding: "6px 4px", backgroundColor: "#FFFBEB", borderRadius: 6 }}>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: "#F59E0B" }}>1</div>
+                      <div style={{ fontSize: 9, color: "#888" }}>Vencendo</div>
+                    </div>
+                    <div style={{ flex: 1, textAlign: "center", padding: "6px 4px", backgroundColor: "#FEF2F2", borderRadius: 6 }}>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: "#EF4444" }}>1</div>
+                      <div style={{ fontSize: 9, color: "#888" }}>Vencido</div>
+                    </div>
+                  </div>
+                </div>
+                <div style={{ fontSize: 11, fontWeight: 600, color: "#999", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8 }}>Alertas</div>
+                {[{ t: "2 ASOs vencidos — ação urgente", s: "high" }, { t: "PCMSO Alimentos BomSabor vencido", s: "high" }, { t: "2 exames próximos do vencimento", s: "medium" }, { t: "Ind. Química Apex — PCMSO vencendo", s: "medium" }].map((a, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "9px", borderRadius: 8, marginBottom: 4, backgroundColor: a.s === "high" ? "#FEF2F2" : "#FFFBEB" }}>
+                    <div style={{ color: a.s === "high" ? "#EF4444" : "#F59E0B", marginTop: 1 }}><I.Alert s={14} /></div>
+                    <span style={{ fontSize: 12, color: "#555", lineHeight: 1.4 }}>{a.t}</span>
+                  </div>
+                ))}
+                <div style={{ fontSize: 11, fontWeight: 600, color: "#999", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8, marginTop: 14 }}>Empresas</div>
+                {ocupEmpresas.map(e => (
+                  <div key={e.id} style={{ display: "flex", alignItems: "center", gap: 8, padding: "7px 8px", borderRadius: 8, cursor: "pointer", marginBottom: 2 }}>
+                    <div style={{ width: 26, height: 26, borderRadius: 7, flexShrink: 0, backgroundColor: "#FFF7ED", color: "#C2410C", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, fontWeight: 700 }}>{e.avatar}</div>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontSize: 12, fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.name}</div>
+                      <div style={{ fontSize: 10, color: "#999" }}>{e.funcionarios} func. • GR {e.risco}</div>
+                    </div>
+                    <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: e.statusColor, flexShrink: 0 }} />
                   </div>
                 ))}
               </>
@@ -945,7 +1144,7 @@ export default function MedComVcApp() {
             {/* Header */}
             <div style={{ padding: "20px 28px 16px", backgroundColor: "#fff", borderBottom: "1px solid #EBEBEB", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <div>
-                <h1 style={{ fontSize: 24, fontWeight: 700, margin: 0, letterSpacing: -0.5 }}>Trilha de Aprendizado</h1>
+                <h1 style={{ fontSize: 24, fontWeight: 700, margin: 0, letterSpacing: -0.5 }}>Trilha do Médico</h1>
                 <p style={{ fontSize: 13, color: "#888", margin: "4px 0 0" }}>Baseada na sua prática clínica real • Atualizada há 2h</p>
               </div>
               <div style={{ display: "flex", gap: 10 }}>
@@ -1892,6 +2091,552 @@ export default function MedComVcApp() {
           </>
         )}
 
+        {/* ──────── GESTOR ──────── */}
+        {page === "gestor" && (
+          <>
+            <div style={{ padding: "20px 28px 16px", display: "flex", alignItems: "center", justifyContent: "space-between", backgroundColor: "#fff", borderBottom: "1px solid #EBEBEB" }}>
+              <div>
+                <h1 style={{ fontSize: 24, fontWeight: 700, margin: 0, letterSpacing: -0.5 }}>Gestão UBS / ESF</h1>
+                <p style={{ fontSize: 13, color: "#888", margin: "4px 0 0" }}>Secretaria Municipal de Saúde • Previne Brasil • Março 2026</p>
+              </div>
+              <div style={{ display: "flex", gap: 10 }}>
+                <select style={{ padding: "8px 14px", borderRadius: 8, border: "1px solid #E0E0E0", backgroundColor: "#fff", fontSize: 13, cursor: "pointer", fontFamily: "inherit" }}>
+                  <option>UBS Jardim Esperança</option><option>UBS Vila Nova</option><option>UBS Centro</option><option>Todas as UBS</option>
+                </select>
+                <select style={{ padding: "8px 14px", borderRadius: 8, border: "1px solid #E0E0E0", backgroundColor: "#fff", fontSize: 13, cursor: "pointer", fontFamily: "inherit" }}>
+                  <option>Março 2026</option><option>Fevereiro 2026</option><option>Janeiro 2026</option><option>Q1 2026</option>
+                </select>
+                <button style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 18px", border: "none", borderRadius: 8, cursor: "pointer", fontSize: 14, fontWeight: 600, background: "linear-gradient(135deg,#2BA89E,#1A8A8A)", color: "#fff" }}>
+                  <I.Sparkle s={16} /> Relatório Previne
+                </button>
+              </div>
+            </div>
+            <div style={{ flex: 1, overflow: "auto", padding: "20px 28px" }}>
+              {/* KPIs */}
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16, marginBottom: 24 }}>
+                {[
+                  { l: "População Cadastrada", v: "12.847", c: "+324", up: true, icon: <I.Users s={18} />, cl: "#1A8A8A" },
+                  { l: "Consultas no Mês", v: "1.284", c: "+12%", up: true, icon: <I.Clipboard s={18} />, cl: "#3B82F6" },
+                  { l: "Cobertura ESF", v: "89%", c: "+3%", up: true, icon: <I.CheckSquare s={18} />, cl: "#22C55E" },
+                  { l: "ICSAB (internações evitáveis)", v: "-18%", c: "↓ 12 int.", up: true, icon: <I.TrendDown />, cl: "#8B5CF6" },
+                ].map((card, i) => (
+                  <div key={i} style={{ backgroundColor: "#fff", borderRadius: 14, padding: "20px", border: "1px solid #E8E8E8", position: "relative", overflow: "hidden" }}>
+                    <div style={{ position: "absolute", top: 16, right: 16, width: 36, height: 36, borderRadius: 10, backgroundColor: card.cl + "12", color: card.cl, display: "flex", alignItems: "center", justifyContent: "center" }}>{card.icon}</div>
+                    <div style={{ fontSize: 12, color: "#888", marginBottom: 6, fontWeight: 500 }}>{card.l}</div>
+                    <div style={{ fontSize: 28, fontWeight: 700, letterSpacing: -1, marginBottom: 6 }}>{card.v}</div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 12, color: "#22C55E" }}>
+                      <I.TrendUp /><span style={{ fontWeight: 600 }}>{card.c}</span><span style={{ color: "#999" }}>vs. mês anterior</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* ── INDICADORES PREVINE BRASIL ── */}
+              <div style={{ backgroundColor: "#fff", borderRadius: 14, padding: "24px", border: "1px solid #E8E8E8", marginBottom: 24 }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
+                  <div>
+                    <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 2 }}>Indicadores Previne Brasil</div>
+                    <div style={{ fontSize: 12, color: "#888" }}>Desempenho nos 7 indicadores de pagamento por performance • Competência Mar/2026</div>
+                  </div>
+                  <div style={{ display: "flex", gap: 12, fontSize: 11, color: "#888" }}>
+                    <span style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ width: 8, height: 8, borderRadius: 2, backgroundColor: "#22C55E", display: "inline-block" }} /> Atingida</span>
+                    <span style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ width: 8, height: 8, borderRadius: 2, backgroundColor: "#EF4444", display: "inline-block" }} /> Abaixo</span>
+                  </div>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  {gestorIndicadoresPrevine.map(ind => {
+                    const atingiu = ind.real >= ind.meta;
+                    const pct = Math.min(ind.real, 100);
+                    return (
+                      <div key={ind.id} style={{ display: "grid", gridTemplateColumns: "24px 1fr 60px 60px", alignItems: "center", gap: 12 }}>
+                        <span style={{ fontSize: 16 }}>{ind.icon}</span>
+                        <div>
+                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
+                            <span style={{ fontSize: 13, fontWeight: 600, color: "#333" }}>{ind.label}</span>
+                            <span style={{ fontSize: 11, color: "#999" }}>Meta: {ind.meta}%</span>
+                          </div>
+                          <div style={{ height: 8, backgroundColor: "#F0F0F0", borderRadius: 4, overflow: "hidden", position: "relative" }}>
+                            <div style={{ position: "absolute", left: 0, top: 0, height: "100%", width: `${ind.meta}%`, borderRight: "2px dashed #CCC" }} />
+                            <div style={{ height: "100%", width: `${pct}%`, borderRadius: 4, backgroundColor: atingiu ? "#22C55E" : "#EF4444", transition: "width 0.5s ease" }} />
+                          </div>
+                        </div>
+                        <div style={{ fontSize: 18, fontWeight: 700, color: atingiu ? "#22C55E" : "#EF4444", textAlign: "right" }}>{ind.real}%</div>
+                        <div style={{ textAlign: "center" }}>
+                          <span style={{ fontSize: 10, fontWeight: 600, padding: "2px 8px", borderRadius: 4, backgroundColor: atingiu ? "#F0FDF4" : "#FEF2F2", color: atingiu ? "#22C55E" : "#EF4444" }}>{atingiu ? "✓ Meta" : "✗ Abaixo"}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Charts Row */}
+              <div style={{ display: "grid", gridTemplateColumns: "3fr 2fr", gap: 16, marginBottom: 24 }}>
+                {/* Atendimentos por tipo */}
+                <div style={{ backgroundColor: "#fff", borderRadius: 14, padding: "20px", border: "1px solid #E8E8E8" }}>
+                  <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 16 }}>Atendimentos por Mês</div>
+                  <ResponsiveContainer width="100%" height={220}>
+                    <AreaChart data={gestorAtendimentosChart}>
+                      <defs>
+                        <linearGradient id="gAgend" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#1A8A8A" stopOpacity={0.12} /><stop offset="95%" stopColor="#1A8A8A" stopOpacity={0} /></linearGradient>
+                        <linearGradient id="gEspont" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#F59E0B" stopOpacity={0.12} /><stop offset="95%" stopColor="#F59E0B" stopOpacity={0} /></linearGradient>
+                        <linearGradient id="gVisita" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#8B5CF6" stopOpacity={0.12} /><stop offset="95%" stopColor="#8B5CF6" stopOpacity={0} /></linearGradient>
+                      </defs>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#F0F0F0" /><XAxis dataKey="month" tick={{ fontSize: 12, fill: "#999" }} axisLine={false} tickLine={false} /><YAxis tick={{ fontSize: 12, fill: "#999" }} axisLine={false} tickLine={false} /><Tooltip contentStyle={{ borderRadius: 8, border: "1px solid #E8E8E8", fontSize: 12 }} />
+                      <Area type="monotone" dataKey="agendada" stackId="1" stroke="#1A8A8A" strokeWidth={2} fill="url(#gAgend)" name="Agendada" />
+                      <Area type="monotone" dataKey="espontanea" stackId="1" stroke="#F59E0B" strokeWidth={2} fill="url(#gEspont)" name="Demanda Espontânea" />
+                      <Area type="monotone" dataKey="visita" stackId="1" stroke="#8B5CF6" strokeWidth={2} fill="url(#gVisita)" name="Visita Domiciliar" />
+                    </AreaChart>
+                  </ResponsiveContainer>
+                  <div style={{ display: "flex", gap: 16, marginTop: 8, justifyContent: "center" }}>
+                    {[{ n: "Agendada", c: "#1A8A8A" }, { n: "Demanda Espontânea", c: "#F59E0B" }, { n: "Visita Domiciliar", c: "#8B5CF6" }].map((l, i) => (<div key={i} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 11 }}><div style={{ width: 8, height: 8, borderRadius: 2, backgroundColor: l.c }} /><span style={{ color: "#666" }}>{l.n}</span></div>))}
+                  </div>
+                </div>
+
+                {/* ICSAB */}
+                <div style={{ backgroundColor: "#fff", borderRadius: 14, padding: "20px", border: "1px solid #E8E8E8" }}>
+                  <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 4 }}>ICSAB — Internações Evitáveis</div>
+                  <div style={{ fontSize: 11, color: "#888", marginBottom: 16 }}>Internações por Condições Sensíveis à AB • Atual vs. Anterior</div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                    {gestorICSAB.map((c, i) => (
+                      <div key={i}>
+                        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
+                          <span style={{ fontSize: 12, fontWeight: 500, color: "#555" }}>{c.condicao}</span>
+                          <span style={{ fontSize: 12, fontWeight: 700, color: c.internacoes < c.prev ? "#22C55E" : "#EF4444" }}>{c.internacoes} <span style={{ fontSize: 10, fontWeight: 400, color: "#999" }}>/ {c.prev} ant.</span></span>
+                        </div>
+                        <div style={{ display: "flex", gap: 4, height: 8 }}>
+                          <div style={{ height: "100%", flex: c.internacoes, borderRadius: 4, backgroundColor: c.color + "CC" }} />
+                          <div style={{ height: "100%", flex: c.prev - c.internacoes > 0 ? c.prev - c.internacoes : 0, borderRadius: 4, backgroundColor: c.color + "22" }} />
+                          <div style={{ height: "100%", flex: Math.max(0, 30 - c.prev), borderRadius: 4, backgroundColor: "#F7F7F8" }} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ marginTop: 14, padding: "10px 12px", backgroundColor: "#F0FDF4", borderRadius: 8, display: "flex", alignItems: "center", gap: 8 }}>
+                    <I.TrendDown /><span style={{ fontSize: 12, color: "#166534", fontWeight: 600 }}>Redução de 18% nas ICSAB vs. trimestre anterior</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Equipes ESF */}
+              <div style={{ backgroundColor: "#fff", borderRadius: 14, padding: "20px", border: "1px solid #E8E8E8", marginBottom: 24 }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+                  <div style={{ fontSize: 15, fontWeight: 700 }}>Equipes de Saúde da Família</div>
+                  <div style={{ fontSize: 12, color: "#888" }}>{gestorEquipesESF.length} equipes • {gestorEquipesESF.reduce((s, e) => s + e.populacao, 0).toLocaleString("pt-BR")} pessoas cobertas</div>
+                </div>
+                <div style={{ borderRadius: 10, border: "1px solid #E8E8E8", overflow: "hidden" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 120px 100px 80px 80px 90px 80px 90px", padding: "12px 16px", backgroundColor: "#FAFAFA", borderBottom: "1px solid #EBEBEB", fontSize: 11, fontWeight: 600, color: "#888", textTransform: "uppercase", letterSpacing: 0.3, alignItems: "center" }}>
+                    <div>Equipe</div><div>Médico</div><div>Enfermeiro</div><div style={{ textAlign: "center" }}>ACS</div><div style={{ textAlign: "center" }}>Pop.</div><div style={{ textAlign: "center" }}>Cobertura</div><div style={{ textAlign: "center" }}>Consult.</div><div style={{ textAlign: "center" }}>Status</div>
+                  </div>
+                  {gestorEquipesESF.map(e => (
+                    <div key={e.id} style={{ display: "grid", gridTemplateColumns: "1fr 120px 100px 80px 80px 90px 80px 90px", padding: "14px 16px", borderBottom: "1px solid #F0F0F0", alignItems: "center" }}>
+                      <div>
+                        <div style={{ fontWeight: 600, fontSize: 14 }}>{e.nome}</div>
+                        <div style={{ fontSize: 11, color: "#999" }}>{e.area}</div>
+                      </div>
+                      <div style={{ fontSize: 12, color: "#555", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.medico.replace("Dr. ", "").replace("Dra. ", "")}</div>
+                      <div style={{ fontSize: 12, color: "#555", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.enfermeiro.replace("Enf. ", "")}</div>
+                      <div style={{ textAlign: "center", fontSize: 14, fontWeight: 600 }}>{e.acs}</div>
+                      <div style={{ textAlign: "center", fontSize: 13, fontWeight: 600 }}>{e.populacao.toLocaleString("pt-BR")}</div>
+                      <div style={{ textAlign: "center" }}>
+                        <span style={{ fontSize: 13, fontWeight: 700, color: e.cobertura >= 90 ? "#22C55E" : e.cobertura >= 80 ? "#F59E0B" : "#EF4444" }}>{e.cobertura}%</span>
+                      </div>
+                      <div style={{ textAlign: "center", fontSize: 14, fontWeight: 600 }}>{e.consultas}</div>
+                      <div style={{ textAlign: "center" }}>
+                        <span style={{ fontSize: 10, fontWeight: 600, padding: "3px 10px", borderRadius: 6, backgroundColor: e.status === "Completa" ? "#F0FDF4" : "#FFFBEB", color: e.statusColor }}>{e.status}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Agenda UBS + Cobertura Vacinal */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 24 }}>
+                {/* Agenda da UBS */}
+                <div style={{ backgroundColor: "#fff", borderRadius: 14, padding: "20px", border: "1px solid #E8E8E8" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+                    <div style={{ fontSize: 15, fontWeight: 700 }}>Agenda da UBS — Hoje</div>
+                    <div style={{ fontSize: 12, color: "#888" }}>05/03/2026 • {gestorAgendaUBS.length} atendimentos</div>
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    {gestorAgendaUBS.map((a, i) => (
+                      <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 12px", borderRadius: 8, border: "1px solid #F0F0F0" }}>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: "#1A8A8A", minWidth: 42 }}>{a.hora}</div>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ fontSize: 13, fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{a.paciente}</div>
+                          <div style={{ fontSize: 11, color: "#999" }}>{a.profissional} • {a.tipo}</div>
+                        </div>
+                        <span style={{ fontSize: 10, fontWeight: 600, padding: "3px 8px", borderRadius: 4, backgroundColor: a.statusBg, color: a.statusColor, whiteSpace: "nowrap" }}>{a.status}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Cobertura Vacinal */}
+                <div style={{ backgroundColor: "#fff", borderRadius: 14, padding: "20px", border: "1px solid #E8E8E8" }}>
+                  <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 4 }}>Cobertura Vacinal</div>
+                  <div style={{ fontSize: 11, color: "#888", marginBottom: 16 }}>Cobertura atual vs. meta PNI • Linha tracejada = meta</div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                    {gestorVacinacao.map((v, i) => {
+                      const atingiu = v.cobertura >= v.meta;
+                      return (
+                        <div key={i}>
+                          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
+                            <span style={{ fontSize: 12, fontWeight: 500, color: "#555" }}>{v.vacina}</span>
+                            <span style={{ fontSize: 12, fontWeight: 700, color: atingiu ? "#22C55E" : "#EF4444" }}>{v.cobertura}%</span>
+                          </div>
+                          <div style={{ height: 8, backgroundColor: "#F0F0F0", borderRadius: 4, overflow: "hidden", position: "relative" }}>
+                            <div style={{ position: "absolute", left: `${v.meta}%`, top: 0, height: "100%", width: 2, backgroundColor: "#999", opacity: 0.4 }} />
+                            <div style={{ height: "100%", width: `${v.cobertura}%`, borderRadius: 4, backgroundColor: atingiu ? "#22C55E" : "#EF4444", transition: "width 0.5s ease" }} />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div style={{ marginTop: 10, fontSize: 11, color: "#999", display: "flex", gap: 12 }}>
+                    <span style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ width: 8, height: 3, backgroundColor: "#22C55E", borderRadius: 2, display: "inline-block" }} /> ≥ Meta</span>
+                    <span style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ width: 8, height: 3, backgroundColor: "#EF4444", borderRadius: 2, display: "inline-block" }} /> Abaixo da meta</span>
+                    <span style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ width: 1, height: 8, backgroundColor: "#999", display: "inline-block" }} /> Meta PNI</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Repasse Federal */}
+              <div style={{ backgroundColor: "#fff", borderRadius: 14, padding: "20px", border: "1px solid #E8E8E8", marginBottom: 24 }}>
+                <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 16 }}>Repasse Federal — PAB + Previne Brasil</div>
+                <ResponsiveContainer width="100%" height={200}>
+                  <BarChart data={gestorRepasse}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#F0F0F0" />
+                    <XAxis dataKey="month" tick={{ fontSize: 11, fill: "#999" }} axisLine={false} tickLine={false} />
+                    <YAxis tick={{ fontSize: 11, fill: "#999" }} axisLine={false} tickLine={false} tickFormatter={v => `${(v / 1000).toFixed(0)}k`} />
+                    <Tooltip contentStyle={{ borderRadius: 8, fontSize: 12 }} formatter={v => [`R$ ${v.toLocaleString("pt-BR")}`, ""]} />
+                    <Bar dataKey="pab" fill="#1A8A8A" radius={[4, 4, 0, 0]} name="PAB Fixo" />
+                    <Bar dataKey="previne" fill="#22C55E" radius={[4, 4, 0, 0]} name="Previne (Performance)" />
+                  </BarChart>
+                </ResponsiveContainer>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginTop: 16 }}>
+                  <div style={{ padding: "12px", backgroundColor: "#E8F7F2", borderRadius: 10, textAlign: "center" }}>
+                    <div style={{ fontSize: 11, color: "#888", marginBottom: 2 }}>PAB Fixo (mensal)</div>
+                    <div style={{ fontSize: 16, fontWeight: 700, color: "#1A8A8A" }}>R$ 48.5k</div>
+                  </div>
+                  <div style={{ padding: "12px", backgroundColor: "#F0FDF4", borderRadius: 10, textAlign: "center" }}>
+                    <div style={{ fontSize: 11, color: "#888", marginBottom: 2 }}>Previne (performance)</div>
+                    <div style={{ fontSize: 16, fontWeight: 700, color: "#22C55E" }}>R$ 38.9k</div>
+                  </div>
+                  <div style={{ padding: "12px", backgroundColor: "#EFF6FF", borderRadius: 10, textAlign: "center" }}>
+                    <div style={{ fontSize: 11, color: "#888", marginBottom: 2 }}>Total repasse Mar</div>
+                    <div style={{ fontSize: 16, fontWeight: 700, color: "#3B82F6" }}>R$ 87.4k</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div style={{ background: "linear-gradient(135deg,#1A8A8A,#147070)", borderRadius: 16, padding: "28px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <div><div style={{ fontSize: 18, fontWeight: 700, color: "#fff", marginBottom: 6 }}>Relatório para Secretaria de Saúde</div><div style={{ fontSize: 14, color: "rgba(255,255,255,0.8)" }}>O ClinBot consolida indicadores Previne Brasil, ICSAB, cobertura vacinal e produtividade das equipes ESF em um relatório executivo para o secretário de saúde e prefeito.</div></div>
+                <button style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 24px", border: "2px solid rgba(255,255,255,0.3)", borderRadius: 12, cursor: "pointer", fontSize: 15, fontWeight: 700, backgroundColor: "rgba(255,255,255,0.15)", color: "#fff", flexShrink: 0, fontFamily: "inherit" }}><I.Sparkle s={18} /> Gerar Relatório</button>
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* ──────── MEDICINA OCUPACIONAL ──────── */}
+        {page === "ocupacional" && (
+          <>
+            <div style={{ padding: "20px 28px 0", display: "flex", alignItems: "center", justifyContent: "space-between", backgroundColor: "#fff", borderBottom: "1px solid #EBEBEB" }}>
+              <div>
+                <h1 style={{ fontSize: 24, fontWeight: 700, margin: 0, letterSpacing: -0.5 }}>Medicina Ocupacional</h1>
+                <p style={{ fontSize: 13, color: "#888", margin: "4px 0 0" }}>Gestão de saúde ocupacional • NR-7 / PCMSO • {ocupEmpresas.reduce((s, e) => s + e.funcionarios, 0)} funcionários</p>
+              </div>
+              <div style={{ display: "flex", gap: 10 }}>
+                <button style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 18px", border: "1px solid #E0E0E0", borderRadius: 8, backgroundColor: "#fff", cursor: "pointer", fontSize: 13, fontWeight: 600, color: "#555", fontFamily: "inherit" }}><I.Download /> Exportar</button>
+                <button style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 18px", border: "none", borderRadius: 8, cursor: "pointer", fontSize: 14, fontWeight: 600, background: "linear-gradient(135deg,#EA580C,#C2410C)", color: "#fff" }}><I.Plus /> Nova Empresa</button>
+              </div>
+            </div>
+            {/* Tabs */}
+            <div style={{ display: "flex", gap: 0, padding: "0 28px", backgroundColor: "#fff", borderBottom: "1px solid #EBEBEB" }}>
+              {[{ key: "dashboard", label: "Dashboard" }, { key: "empresas", label: "Empresas" }, { key: "funcionarios", label: "Funcionários" }, { key: "aso", label: "Emitir ASO" }].map(t => (
+                <div key={t.key} onClick={() => setOcupTab(t.key)} style={{ padding: "12px 20px", cursor: "pointer", fontSize: 13, fontWeight: ocupTab === t.key ? 700 : 500, color: ocupTab === t.key ? "#C2410C" : "#888", borderBottom: ocupTab === t.key ? "2px solid #C2410C" : "2px solid transparent", transition: "all 0.15s" }}>{t.label}</div>
+              ))}
+            </div>
+            <div style={{ flex: 1, overflow: "auto", padding: "20px 28px" }}>
+
+              {/* ── TAB: DASHBOARD ── */}
+              {ocupTab === "dashboard" && (
+                <>
+                  {/* KPIs */}
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16, marginBottom: 24 }}>
+                    {[
+                      { l: "Total Funcionários", v: ocupEmpresas.reduce((s, e) => s + e.funcionarios, 0).toString(), c: "+24", up: true, icon: <I.Users s={18} />, cl: "#C2410C" },
+                      { l: "Exames no Mês", v: "48", c: "+15%", up: true, icon: <I.Clipboard s={18} />, cl: "#3B82F6" },
+                      { l: "Conformidade PCMSO", v: "80%", c: "+5%", up: true, icon: <I.CheckSquare s={18} />, cl: "#22C55E" },
+                      { l: "ASOs Vencidos", v: "2", c: "+1", up: false, icon: <I.Alert s={18} />, cl: "#EF4444" },
+                    ].map((card, i) => (
+                      <div key={i} style={{ backgroundColor: "#fff", borderRadius: 14, padding: "20px", border: "1px solid #E8E8E8", position: "relative", overflow: "hidden" }}>
+                        <div style={{ position: "absolute", top: 16, right: 16, width: 36, height: 36, borderRadius: 10, backgroundColor: card.cl + "12", color: card.cl, display: "flex", alignItems: "center", justifyContent: "center" }}>{card.icon}</div>
+                        <div style={{ fontSize: 12, color: "#888", marginBottom: 6, fontWeight: 500 }}>{card.l}</div>
+                        <div style={{ fontSize: 28, fontWeight: 700, letterSpacing: -1, marginBottom: 6 }}>{card.v}</div>
+                        <div style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 12, color: card.up && card.l !== "ASOs Vencidos" ? "#22C55E" : "#EF4444" }}>
+                          {card.up && card.l !== "ASOs Vencidos" ? <I.TrendUp /> : <I.TrendDown />}
+                          <span style={{ fontWeight: 600 }}>{card.c}</span><span style={{ color: "#999" }}>vs. mês anterior</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Charts Row */}
+                  <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 16, marginBottom: 24 }}>
+                    <div style={{ backgroundColor: "#fff", borderRadius: 14, padding: "20px", border: "1px solid #E8E8E8" }}>
+                      <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 16 }}>Exames por Mês</div>
+                      <ResponsiveContainer width="100%" height={200}>
+                        <AreaChart data={ocupExamesChart}>
+                          <defs><linearGradient id="gocup" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#EA580C" stopOpacity={0.15} /><stop offset="95%" stopColor="#EA580C" stopOpacity={0} /></linearGradient></defs>
+                          <CartesianGrid strokeDasharray="3 3" stroke="#F0F0F0" /><XAxis dataKey="month" tick={{ fontSize: 12, fill: "#999" }} axisLine={false} tickLine={false} /><YAxis tick={{ fontSize: 12, fill: "#999" }} axisLine={false} tickLine={false} /><Tooltip contentStyle={{ borderRadius: 8, border: "1px solid #E8E8E8", fontSize: 13 }} />
+                          <Area type="monotone" dataKey="v" stroke="#EA580C" strokeWidth={2.5} fill="url(#gocup)" dot={{ fill: "#EA580C", r: 4 }} name="Exames" />
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </div>
+                    <div style={{ backgroundColor: "#fff", borderRadius: 14, padding: "20px", border: "1px solid #E8E8E8" }}>
+                      <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 12 }}>Riscos Ocupacionais</div>
+                      <ResponsiveContainer width="100%" height={140}>
+                        <PieChart><Pie data={ocupRiscoChart} cx="50%" cy="50%" innerRadius={40} outerRadius={65} paddingAngle={3} dataKey="value">{ocupRiscoChart.map((e, i) => <Cell key={i} fill={e.color} />)}</Pie><Tooltip contentStyle={{ borderRadius: 8, border: "1px solid #E8E8E8", fontSize: 12 }} /></PieChart>
+                      </ResponsiveContainer>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 8 }}>
+                        {ocupRiscoChart.map((c, i) => (<div key={i} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 11 }}><div style={{ width: 8, height: 8, borderRadius: 2, backgroundColor: c.color }} /><span style={{ color: "#666" }}>{c.name}</span><span style={{ fontWeight: 700, color: "#333" }}>{c.value}%</span></div>))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Agenda de Exames Hoje */}
+                  <div style={{ backgroundColor: "#fff", borderRadius: 14, padding: "20px", border: "1px solid #E8E8E8", marginBottom: 24 }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+                      <div style={{ fontSize: 15, fontWeight: 700 }}>Agenda de Exames — Hoje</div>
+                      <div style={{ fontSize: 12, color: "#888" }}>05/03/2026 • {ocupAgendaHoje.length} exames</div>
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                      {ocupAgendaHoje.map((a, i) => (
+                        <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 12px", borderRadius: 8, border: "1px solid #F0F0F0", backgroundColor: "#fff" }}>
+                          <div style={{ fontSize: 13, fontWeight: 700, color: "#C2410C", minWidth: 42 }}>{a.hora}</div>
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <div style={{ fontSize: 13, fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{a.funcionario}</div>
+                            <div style={{ fontSize: 11, color: "#999" }}>{a.empresa} • {a.tipo}</div>
+                          </div>
+                          <span style={{ fontSize: 10, fontWeight: 600, padding: "3px 8px", borderRadius: 4, backgroundColor: a.statusBg, color: a.statusColor, whiteSpace: "nowrap" }}>{a.status}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* NR-7 Compliance Banner */}
+                  <div style={{ background: "linear-gradient(135deg,#EA580C,#C2410C)", borderRadius: 16, padding: "28px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <div><div style={{ fontSize: 18, fontWeight: 700, color: "#fff", marginBottom: 6 }}>Relatório de conformidade NR-7</div><div style={{ fontSize: 14, color: "rgba(255,255,255,0.8)" }}>Gere um relatório completo de conformidade PCMSO, ASOs pendentes e exposição a riscos por empresa.</div></div>
+                    <button style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 24px", border: "2px solid rgba(255,255,255,0.3)", borderRadius: 12, cursor: "pointer", fontSize: 15, fontWeight: 700, backgroundColor: "rgba(255,255,255,0.15)", color: "#fff", flexShrink: 0, fontFamily: "inherit" }}><I.Sparkle s={18} /> Gerar Relatório</button>
+                  </div>
+                </>
+              )}
+
+              {/* ── TAB: EMPRESAS ── */}
+              {ocupTab === "empresas" && (
+                <>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 16 }}>
+                    {ocupEmpresas.map(e => (
+                      <div key={e.id} style={{ backgroundColor: "#fff", borderRadius: 14, padding: "20px", border: "1px solid #E8E8E8", position: "relative", overflow: "hidden" }}>
+                        <div style={{ position: "absolute", top: 16, right: 16 }}>
+                          <span style={{ fontSize: 10, fontWeight: 700, padding: "3px 8px", borderRadius: 6, backgroundColor: e.status === "Em dia" ? "#F0FDF4" : e.status === "Vencendo" ? "#FFFBEB" : "#FEF2F2", color: e.statusColor }}>{e.status}</span>
+                        </div>
+                        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                          <div style={{ width: 44, height: 44, borderRadius: 12, backgroundColor: "#FFF7ED", color: "#C2410C", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 700 }}>{e.avatar}</div>
+                          <div>
+                            <div style={{ fontSize: 15, fontWeight: 700 }}>{e.name}</div>
+                            <div style={{ fontSize: 12, color: "#888" }}>{e.cnpj}</div>
+                          </div>
+                        </div>
+                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 16 }}>
+                          <div style={{ padding: "10px", backgroundColor: "#F7F7F8", borderRadius: 8 }}>
+                            <div style={{ fontSize: 10, color: "#888", marginBottom: 2, textTransform: "uppercase", fontWeight: 600, letterSpacing: 0.3 }}>Ramo</div>
+                            <div style={{ fontSize: 13, fontWeight: 600 }}>{e.ramo}</div>
+                          </div>
+                          <div style={{ padding: "10px", backgroundColor: "#F7F7F8", borderRadius: 8 }}>
+                            <div style={{ fontSize: 10, color: "#888", marginBottom: 2, textTransform: "uppercase", fontWeight: 600, letterSpacing: 0.3 }}>GR (NR-4)</div>
+                            <div style={{ fontSize: 13, fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
+                              <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", backgroundColor: e.risco <= 1 ? "#22C55E" : e.risco <= 2 ? "#F59E0B" : e.risco <= 3 ? "#EA580C" : "#EF4444" }} />
+                              Grau {e.risco}
+                            </div>
+                          </div>
+                          <div style={{ padding: "10px", backgroundColor: "#F7F7F8", borderRadius: 8 }}>
+                            <div style={{ fontSize: 10, color: "#888", marginBottom: 2, textTransform: "uppercase", fontWeight: 600, letterSpacing: 0.3 }}>Funcionários</div>
+                            <div style={{ fontSize: 13, fontWeight: 600 }}>{e.funcionarios}</div>
+                          </div>
+                          <div style={{ padding: "10px", backgroundColor: "#F7F7F8", borderRadius: 8 }}>
+                            <div style={{ fontSize: 10, color: "#888", marginBottom: 2, textTransform: "uppercase", fontWeight: 600, letterSpacing: 0.3 }}>PCMSO Vigência</div>
+                            <div style={{ fontSize: 13, fontWeight: 600, color: e.status === "Vencido" ? "#EF4444" : "#333" }}>{e.pcmsoVigencia}</div>
+                          </div>
+                        </div>
+                        <div style={{ display: "flex", gap: 8 }}>
+                          <button style={{ flex: 1, padding: "8px", border: "1px solid #E0E0E0", borderRadius: 8, backgroundColor: "#fff", cursor: "pointer", fontSize: 12, fontWeight: 600, color: "#555", fontFamily: "inherit" }}>Ver detalhes</button>
+                          <button style={{ flex: 1, padding: "8px", border: "none", borderRadius: 8, backgroundColor: "#FFF7ED", cursor: "pointer", fontSize: 12, fontWeight: 600, color: "#C2410C", fontFamily: "inherit" }}>Gerenciar PCMSO</button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {/* ── TAB: FUNCIONÁRIOS ── */}
+              {ocupTab === "funcionarios" && (
+                <>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+                    <div style={{ flex: 1, minWidth: 240, display: "flex", alignItems: "center", gap: 8, padding: "10px 14px", backgroundColor: "#fff", borderRadius: 10, border: "1px solid #E0E0E0" }}>
+                      <I.Search /><input value={ocupSearch} onChange={e => setOcupSearch(e.target.value)} placeholder="Buscar por nome ou cargo..." style={{ flex: 1, border: "none", outline: "none", fontSize: 14, backgroundColor: "transparent", fontFamily: "inherit" }} />
+                      {ocupSearch && <button onClick={() => setOcupSearch("")} style={{ background: "none", border: "none", cursor: "pointer", color: "#999", fontSize: 16 }}>×</button>}
+                    </div>
+                    <select value={ocupEmpresaFilter} onChange={e => setOcupEmpresaFilter(e.target.value)} style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #E0E0E0", backgroundColor: "#fff", fontSize: 13, cursor: "pointer", fontFamily: "inherit", minWidth: 200 }}>
+                      <option value="">Todas empresas</option>
+                      {ocupEmpresas.map(e => <option key={e.id} value={e.id}>{e.name}</option>)}
+                    </select>
+                  </div>
+                  <div style={{ backgroundColor: "#fff", borderRadius: 12, border: "1px solid #E8E8E8", overflow: "hidden" }}>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 140px 120px 1fr 100px 100px 90px", padding: "12px 16px", backgroundColor: "#FAFAFA", borderBottom: "1px solid #EBEBEB", fontSize: 11, fontWeight: 600, color: "#888", textTransform: "uppercase", letterSpacing: 0.3, alignItems: "center" }}>
+                      <div>Funcionário</div><div>Empresa</div><div>Cargo</div><div>Riscos</div><div>Último ASO</div><div>Próximo ASO</div><div style={{ textAlign: "center" }}>Status</div>
+                    </div>
+                    {filteredOcupFunc.map(f => (
+                      <div key={f.id} style={{ display: "grid", gridTemplateColumns: "1fr 140px 120px 1fr 100px 100px 90px", padding: "14px 16px", borderBottom: "1px solid #F0F0F0", alignItems: "center" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                          <div style={{ width: 34, height: 34, borderRadius: "50%", flexShrink: 0, backgroundColor: "#FFF7ED", color: "#C2410C", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700 }}>{f.avatar}</div>
+                          <div><div style={{ fontWeight: 600, fontSize: 14 }}>{f.name}</div><div style={{ fontSize: 11, color: "#999" }}>{f.setor}</div></div>
+                        </div>
+                        <div style={{ fontSize: 12, color: "#555", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.empresa}</div>
+                        <div style={{ fontSize: 13, color: "#555" }}>{f.cargo}</div>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                          {f.riscos.map((r, i) => <span key={i} style={{ fontSize: 10, fontWeight: 600, padding: "2px 6px", borderRadius: 4, backgroundColor: r === "Químico" ? "#FFFBEB" : r === "Ruído" ? "#EFF6FF" : r === "Biológico" ? "#F0FDF4" : r === "Elétrico" ? "#FEF2F2" : "#F7F7F8", color: r === "Químico" ? "#D97706" : r === "Ruído" ? "#3B82F6" : r === "Biológico" ? "#22C55E" : r === "Elétrico" ? "#EF4444" : "#888" }}>{r}</span>)}
+                        </div>
+                        <div style={{ fontSize: 12, color: "#555" }}>{f.ultimoASO}</div>
+                        <div style={{ fontSize: 12, color: f.status === "Vencido" ? "#EF4444" : "#555", fontWeight: f.status === "Vencido" ? 600 : 400 }}>{f.proximoASO}</div>
+                        <div style={{ textAlign: "center" }}>
+                          <span style={{ fontSize: 10, fontWeight: 600, padding: "3px 8px", borderRadius: 6, backgroundColor: f.statusBg, color: f.statusColor }}>{f.status}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {/* ── TAB: EMITIR ASO ── */}
+              {ocupTab === "aso" && (
+                <>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 20 }}>
+                    {/* ASO Form */}
+                    <div style={{ backgroundColor: "#fff", borderRadius: 14, padding: "24px", border: "1px solid #E8E8E8" }}>
+                      <div style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Emitir ASO</div>
+                      <div style={{ fontSize: 13, color: "#888", marginBottom: 20 }}>Atestado de Saúde Ocupacional — NR-7</div>
+
+                      {/* Funcionário */}
+                      <div style={{ marginBottom: 16 }}>
+                        <label style={{ fontSize: 12, fontWeight: 600, color: "#555", marginBottom: 6, display: "block", textTransform: "uppercase", letterSpacing: 0.3 }}>Funcionário</label>
+                        <select style={{ width: "100%", padding: "10px 14px", borderRadius: 8, border: "1px solid #E0E0E0", backgroundColor: "#F7F7F8", fontSize: 14, fontFamily: "inherit", cursor: "pointer" }}>
+                          <option value="">Selecione o funcionário...</option>
+                          {ocupFuncionarios.map(f => <option key={f.id} value={f.id}>{f.name} — {f.empresa} ({f.cargo})</option>)}
+                        </select>
+                      </div>
+
+                      {/* Tipo de Exame */}
+                      <div style={{ marginBottom: 16 }}>
+                        <label style={{ fontSize: 12, fontWeight: 600, color: "#555", marginBottom: 6, display: "block", textTransform: "uppercase", letterSpacing: 0.3 }}>Tipo de Exame</label>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                          {ocupExamesTipos.map(t => (
+                            <button key={t} onClick={() => setOcupAsoTipo(t)} style={{ padding: "8px 16px", borderRadius: 8, border: ocupAsoTipo === t ? "2px solid #C2410C" : "1px solid #E0E0E0", backgroundColor: ocupAsoTipo === t ? "#FFF7ED" : "#fff", cursor: "pointer", fontSize: 13, fontWeight: ocupAsoTipo === t ? 700 : 500, color: ocupAsoTipo === t ? "#C2410C" : "#555", fontFamily: "inherit", transition: "all 0.15s" }}>{t}</button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Riscos Ocupacionais */}
+                      <div style={{ marginBottom: 16 }}>
+                        <label style={{ fontSize: 12, fontWeight: 600, color: "#555", marginBottom: 6, display: "block", textTransform: "uppercase", letterSpacing: 0.3 }}>Riscos Ocupacionais Identificados</label>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                          {["Ruído", "Químico", "Biológico", "Ergonômico", "Elétrico", "Queda", "Vibração", "Calor", "Radiação"].map(r => (
+                            <div key={r} style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 12px", borderRadius: 6, border: "1px solid #E0E0E0", backgroundColor: "#F7F7F8", cursor: "pointer", fontSize: 12 }}>
+                              <input type="checkbox" style={{ accentColor: "#C2410C", width: 14, height: 14, cursor: "pointer" }} /> {r}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Exames Complementares */}
+                      <div style={{ marginBottom: 16 }}>
+                        <label style={{ fontSize: 12, fontWeight: 600, color: "#555", marginBottom: 6, display: "block", textTransform: "uppercase", letterSpacing: 0.3 }}>Exames Complementares Realizados</label>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                          {["Audiometria", "Espirometria", "Acuidade Visual", "EAS", "Hemograma", "Glicemia", "ECG", "Raio-X Tórax"].map(ex => (
+                            <div key={ex} style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 12px", borderRadius: 6, border: "1px solid #E0E0E0", backgroundColor: "#fff", cursor: "pointer", fontSize: 12 }}>
+                              <input type="checkbox" style={{ accentColor: "#C2410C", width: 14, height: 14, cursor: "pointer" }} /> {ex}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Resultado */}
+                      <div style={{ marginBottom: 16 }}>
+                        <label style={{ fontSize: 12, fontWeight: 600, color: "#555", marginBottom: 6, display: "block", textTransform: "uppercase", letterSpacing: 0.3 }}>Resultado</label>
+                        <div style={{ display: "flex", gap: 10 }}>
+                          {[{ v: "Apto", c: "#22C55E", bg: "#F0FDF4" }, { v: "Apto com restrições", c: "#F59E0B", bg: "#FFFBEB" }, { v: "Inapto", c: "#EF4444", bg: "#FEF2F2" }].map(r => (
+                            <button key={r.v} onClick={() => setOcupAsoResult(r.v)} style={{ flex: 1, padding: "12px", borderRadius: 10, border: ocupAsoResult === r.v ? `2px solid ${r.c}` : "1px solid #E0E0E0", backgroundColor: ocupAsoResult === r.v ? r.bg : "#fff", cursor: "pointer", fontSize: 14, fontWeight: ocupAsoResult === r.v ? 700 : 500, color: ocupAsoResult === r.v ? r.c : "#555", fontFamily: "inherit", transition: "all 0.15s" }}>{r.v}</button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* CID e Observações */}
+                      <div style={{ marginBottom: 20 }}>
+                        <label style={{ fontSize: 12, fontWeight: 600, color: "#555", marginBottom: 6, display: "block", textTransform: "uppercase", letterSpacing: 0.3 }}>Observações / CID (se aplicável)</label>
+                        <textarea placeholder="Observações clínicas, restrições ou CID relevante..." style={{ width: "100%", padding: "10px 14px", borderRadius: 8, border: "1px solid #E0E0E0", backgroundColor: "#F7F7F8", fontSize: 13, fontFamily: "inherit", resize: "vertical", minHeight: 80 }} />
+                      </div>
+
+                      {/* Actions */}
+                      <div style={{ display: "flex", gap: 10 }}>
+                        <button style={{ flex: 1, padding: "12px", border: "1px solid #E0E0E0", borderRadius: 10, backgroundColor: "#fff", cursor: "pointer", fontSize: 14, fontWeight: 600, color: "#555", fontFamily: "inherit" }}><I.Eye /> Pré-visualizar</button>
+                        <button style={{ flex: 1, padding: "12px", border: "none", borderRadius: 10, cursor: "pointer", fontSize: 14, fontWeight: 700, background: "linear-gradient(135deg,#EA580C,#C2410C)", color: "#fff", fontFamily: "inherit", display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}><I.Doc s={16} /> Emitir ASO</button>
+                      </div>
+                    </div>
+
+                    {/* AI Sidebar */}
+                    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                      {/* ClinBot suggestion */}
+                      <div style={{ backgroundColor: "#fff", borderRadius: 14, padding: "20px", border: "1px solid #E8E8E8" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 12 }}><I.Sparkle s={16} /><span style={{ fontSize: 14, fontWeight: 700, color: "#C2410C" }}>ClinBot — Sugestão IA</span></div>
+                        <div style={{ padding: "14px", backgroundColor: "#FFF7ED", borderRadius: 10, border: "1px solid #FED7AA", marginBottom: 12 }}>
+                          <div style={{ fontSize: 13, color: "#92400E", lineHeight: 1.6 }}>
+                            Baseado nos <strong>riscos identificados</strong> para este setor e cargo, os seguintes exames complementares são recomendados:
+                          </div>
+                          <div style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 6 }}>
+                            {[{ exam: "Audiometria tonal", reason: "Exposição a ruído > 80dB (NR-15)" }, { exam: "Espirometria", reason: "Exposição a agentes químicos inaláveis" }, { exam: "Acuidade visual", reason: "Trabalho em altura — NR-35" }].map((s, i) => (
+                              <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "8px 10px", backgroundColor: "#fff", borderRadius: 6, border: "1px solid #FED7AA" }}>
+                                <div style={{ color: "#EA580C", marginTop: 2, flexShrink: 0 }}><I.CheckCircle s={14} /></div>
+                                <div><div style={{ fontSize: 12, fontWeight: 600, color: "#333" }}>{s.exam}</div><div style={{ fontSize: 11, color: "#888" }}>{s.reason}</div></div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        <div style={{ fontSize: 11, color: "#999", lineHeight: 1.5 }}>💡 O ClinBot analisa o PPRA/PGR da empresa e a função do trabalhador para sugerir exames complementares conforme a NR-7.</div>
+                      </div>
+
+                      {/* Quick stats */}
+                      <div style={{ backgroundColor: "#fff", borderRadius: 14, padding: "20px", border: "1px solid #E8E8E8" }}>
+                        <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 12 }}>Resumo do Dia</div>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                          {[{ l: "ASOs emitidos hoje", v: "3" }, { l: "Admissionais pendentes", v: "2" }, { l: "Periódicos vencendo esta semana", v: "4" }, { l: "Demissionais agendados", v: "1" }].map((s, i) => (
+                            <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 10px", backgroundColor: "#F7F7F8", borderRadius: 6 }}>
+                              <span style={{ fontSize: 12, color: "#666" }}>{s.l}</span>
+                              <span style={{ fontSize: 14, fontWeight: 700, color: "#333" }}>{s.v}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+            </div>
+          </>
+        )}
+
       </div>
 
       {/* ═══ RIGHT PANELS ═══ */}
@@ -2054,7 +2799,7 @@ export default function MedComVcApp() {
         <div style={{ width: 400, minWidth: 400, borderLeft: "1px solid #EBEBEB", backgroundColor: "#fff", display: "flex", flexDirection: "column", overflow: "hidden" }}>
           <div style={{ padding: "12px 16px", borderBottom: "1px solid #EBEBEB", display: "flex", alignItems: "center", gap: 8 }}>
             <button onClick={() => setRightPanel(null)} style={{ background: "none", border: "none", cursor: "pointer", color: "#666", display: "flex" }}><I.Close /></button>
-            <div style={{ flex: 1, fontSize: 15, fontWeight: 700 }}>ClinBot – Trilha de Aprendizado</div>
+            <div style={{ flex: 1, fontSize: 15, fontWeight: 700 }}>ClinBot – Trilha do Médico</div>
             <button style={{ background: "none", border: "none", cursor: "pointer", color: "#666", display: "flex" }}><I.Refresh /></button>
           </div>
 
